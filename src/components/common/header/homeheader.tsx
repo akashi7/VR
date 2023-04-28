@@ -29,7 +29,10 @@ const HomeNavBar: FC = (): ReactElement => {
         className='w-full flex justify-between  items-center h-[50px]'
         style={{ background: 'white' }}
       >
-        <div className='text-base font-bold ' onClick={() => navigate('/')}>
+        <div
+          className='text-base font-bold hover:cursor-pointer'
+          onClick={() => navigate('/')}
+        >
           hello, ar
         </div>
         <div className='flex lg:justify-between items-center '>
