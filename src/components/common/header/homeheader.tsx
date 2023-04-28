@@ -55,7 +55,12 @@ const HomeNavBar: FC = (): ReactElement => {
           headerStyle={{ border: 'none' }}
         >
           <div className='flex flex-col items-left mt-[10px] '>
-            <div className='text-sm m-[8px] hover:cursor-pointer'>로그인</div>
+            <div
+              className='text-sm m-[8px] hover:cursor-pointer'
+              onClick={() => navigates('login')}
+            >
+              로그인
+            </div>
             <div className='text-sm m-[8px] hover:cursor-pointer'>
               관리 분석
             </div>
