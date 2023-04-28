@@ -8,7 +8,7 @@ import kakao from '../../../assets/images/kakao.png'
 const LoginPage: FC = (): ReactElement => {
   return (
     <Layout className='lg:mt-[50px] bg-white'>
-      <div className='mx-auto lg:w-[80%] lg:p-[0px] p-[15px] flex flex-col w-full h-screen lg:items-center '>
+      <div className='mx-auto lg:w-[80%] lg:p-[0px] p-[15px] flex flex-col w-full h-screen  lg:h-[100%] lg:items-center '>
         <div className='lg:text-center text-left mt-[50px] left-0 '>
           <div className='font-bold text-2xl'>로그인</div>
           <div className='font-medium text-sm text-black mt-[5px]'>
