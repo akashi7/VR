@@ -309,7 +309,7 @@ const HomePage: FC = (): ReactElement => {
               <p className='lg:text-2xl w-full  text-xl font-bold lg:mb-[20px]'>
                 더 궁금한 점이 있거나 상담을 원하신다면?
               </p>
-              <div className='bg-hblue w-full lg:w-fit flex lg:flex-row p-[6px] lg:items-center  mx-auto  '>
+              <div className='bg-hblue w-full lg:w-fit justify-center flex lg:flex-row p-[6px] lg:items-center  mx-auto  '>
                 <p className='font-medium text-sm text-white'>
                   공지 사항 및 자주 묻는 질문
                 </p>
