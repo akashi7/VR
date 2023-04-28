@@ -19,6 +19,7 @@ const HomeNavBar: FC = (): ReactElement => {
   )
 
   function navigates(type: string): void {
+    ToogleDrawer()
     navigate(`/${type}`)
   }
 

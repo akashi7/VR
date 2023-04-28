@@ -15,7 +15,7 @@ const LoginPage: FC = (): ReactElement => {
             Hello AR CMS에 오신 걸 환영합니다!
           </div>
         </div>
-        <div className=' lg:w-[25%] lg:mt-[40px] w-full fixed lg:relative bottom-[50px] lg:bottom-[0px]  left-0  p-[10px] lg:p-[0px]'>
+        <div className=' lg:w-[25%] lg:mt-[40px] w-full absolute lg:relative bottom-[50px] lg:bottom-[0px]  left-0  p-[10px] lg:p-[0px]'>
           <div className='flex flex-row items-center justify-center lg:m-[15px] mb-[8px] lg:mb-[0px] w-[100%]  p-[10px] border-solid border-2 border-lgborder'>
             <img src={naver} alt='naver' />
             <p className='pl-[10px] font-bold'>네이버로 로그인</p>
