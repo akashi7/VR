@@ -20,7 +20,10 @@ export default {
         'hroundy':"#FFF9EC",
         'vground':"#D9D9D9",
         "hfooter":"#ECF1FD",
-        "lgborder":"#D6D6D6"
+        "lgborder":"#D6D6D6",
+        "navactive":"#F8F8F8",
+        'tcolor':"#999999",
+        "tred":"#FF334B"
       }
     },
   },
