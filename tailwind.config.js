@@ -23,7 +23,9 @@ export default {
         "lgborder":"#D6D6D6",
         "navactive":"#F8F8F8",
         'tcolor':"#999999",
-        "tred":"#FF334B"
+        "tred":"#FF334B",
+        "mybcc":"#EBEBEB",
+        "mycloror":"#C2C2C2"
       }
     },
   },
