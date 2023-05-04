@@ -4,7 +4,7 @@ import { useMatch, useNavigate } from 'react-router-dom'
 
 const BasicInformation: FC = (): ReactElement => {
   const basicInfoMatch = useMatch('/sd/')
-  const billingMatch = useMatch('/sd/vt')
+  const planMatch = useMatch('/sd/plan')
   const navigate = useNavigate()
 
   return (
@@ -25,11 +25,11 @@ const BasicInformation: FC = (): ReactElement => {
             </div>
             <div
               className={
-                billingMatch
+                planMatch
                   ? 'border-b-2 border-black font-medium text-lg text-black ml-[20px] hover:cursor-pointer '
                   : 'text-tcolor font-medium text-lg  ml-[20px] hover:cursor-pointer'
               }
-              onClick={() => navigate('/sd/vt')}
+              onClick={() => navigate('/sd/plan')}
             >
               요금제 관리
             </div>
