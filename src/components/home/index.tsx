@@ -47,7 +47,7 @@ const HomePage: FC = (): ReactElement => {
           </div>
         </div>
         <div className='lg:mb-[136px]'></div>
-        <div className='flex w-[100%] flex-col-reverse  mt-[15px] lg:flex-row  items-center w-full lg:w-[80%] lg:mx-auto  lg:p-[0px]'>
+        <div className='flex  flex-col-reverse  mt-[15px] lg:flex-row  items-center w-full lg:w-[80%] lg:mx-auto  lg:p-[0px]'>
           <div className='w-[100%] lg:pl-[250px]'>
             <div className='lg:mb-[10px] mt-[10px]'>
               <p className='text-hblue'>손쉬운 파일 등록</p>
@@ -97,7 +97,7 @@ const HomePage: FC = (): ReactElement => {
           </div>
           <div className='w-full  mt-[10px] lg:mt-[0px] lg:pl-[300px]'>
             <div className='lg:mb-[10px] mb-[10px]'>
-              <p className='text-hblue text-sm text-hpurple'>
+              <p className='text-sm text-hpurple'>
                 실제와 가까운 제품 확인을 위해
               </p>
             </div>
@@ -123,9 +123,7 @@ const HomePage: FC = (): ReactElement => {
         <div className='flex  flex-col-reverse lg:flex-row items-center lg:w-[80%] lg:mx-auto  lg:p-[0px] '>
           <div className='w-[100%] lg:pl-[250px] mt-[20px]'>
             <div className='lg:mb-[10px] mt-[10px] lg:mt-[0px] '>
-              <p className='text-hblue text-sm text-htgreen'>
-                AR 서비스 애널리틱스
-              </p>
+              <p className='text-sm text-htgreen'>AR 서비스 애널리틱스</p>
             </div>
             <div className='lg:mb-[15px] mt-[10px] lg:mt-[0px] '>
               <p className='font-bold lg:text-3xl text-black'>
@@ -227,7 +225,7 @@ const HomePage: FC = (): ReactElement => {
         </div>
         <div className='lg:mb-[20px] mb-[40px]'></div>
         <div className='lg:w-[80%] w-full lg:mx-auto  lg:p-[0px]'>
-          <div className='w-[50%] w-full lg:pl-[250px] mb-[20px]'>
+          <div className='lg:w-[50%] w-full lg:pl-[250px] mb-[20px]'>
             <p className='font-bold lg:text-3xl text-xl  text-black'>
               AR 서비스 관리는 이렇게 이용해 보세요!
             </p>
@@ -242,15 +240,15 @@ const HomePage: FC = (): ReactElement => {
             </p>
           </div>
         </div>
-        <div className='lg:mb-[157px] mb-[80px] lg:mb-[0px] '></div>
+        <div className='lg:mb-[157px] mb-[80px] '></div>
         <div className='lg:w-[80%] lg:mx-auto'>
           <div className='lg:w-[90%] w-full lg:pl-[250px] border-solid border-1 border-black '>
             <video src={videos} controls></video>
           </div>
         </div>
-        <div className='lg:mb-[20px] mb-[40px] lg:mb-[0px] '></div>
+        <div className='lg:mb-[20px] mb-[40px] '></div>
         <div className='lg:w-[80%] w-full lg:mx-auto  lg:p-[0px]'>
-          <div className='w-[50%] w-full lg:pl-[250px] lg:mb-[20px]  '>
+          <div className='lg:w-[50%] w-full lg:pl-[250px] lg:mb-[20px]  '>
             <p className='font-bold lg:text-3xl text-xl  text-black'>
               AR 서비스 관리는 이렇게 이용해 보세요!
             </p>
@@ -272,7 +270,7 @@ const HomePage: FC = (): ReactElement => {
         </div>
         <div className='lg:mb-[240px] mb-[100px] '></div>
         <div className=' lg:p-[0px] w-full'>
-          <p className='text-center font-bold lg:text-4xl text-xl text-3xl'>
+          <p className='text-center font-bold lg:text-4xl text-xl'>
             hello, ar과 함께하고 있는 기업들
           </p>
         </div>
