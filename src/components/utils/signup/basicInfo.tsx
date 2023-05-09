@@ -2,7 +2,7 @@ import { Layout } from 'antd'
 import { FC, ReactElement, useState } from 'react'
 import { useMatch, useNavigate } from 'react-router-dom'
 import { CheckBox } from '../../common/input'
-import { DeleteModal } from '../../modals'
+import { GlobalModel } from '../../modals'
 
 const BasicInformation: FC = (): ReactElement => {
   const basicInfoMatch = useMatch('/sd/')
@@ -90,7 +90,7 @@ const BasicInformation: FC = (): ReactElement => {
               </button>
             </div>
             {toogle && (
-              <DeleteModal
+              <GlobalModel
                 toogle={toogle}
                 Toogle={Toogle}
                 title='계정 삭제 및 회원 탈퇴합니다.'

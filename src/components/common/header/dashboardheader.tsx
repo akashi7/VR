@@ -18,8 +18,8 @@ const DashNavBar: FC = (): ReactElement => {
     />
   )
 
-  function navigates(type: string): void {
-    ToogleDrawer()
+  function navigates(type?: string): void {
+    openDrawer && ToogleDrawer()
     navigate(`/${type}`)
   }
 

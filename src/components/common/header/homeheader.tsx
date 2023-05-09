@@ -19,7 +19,7 @@ const HomeNavBar: FC = (): ReactElement => {
   )
 
   function navigates(type: string): void {
-    ToogleDrawer()
+    openDrawer && ToogleDrawer()
     navigate(`/${type}`)
   }
 
@@ -59,6 +59,7 @@ const HomeNavBar: FC = (): ReactElement => {
           width={'250px'}
           closeIcon={CloseIcon}
           headerStyle={{ border: 'none' }}
+          className='drawer'
         >
           <div className='flex flex-col items-left mt-[10px] '>
             <div
