@@ -1,11 +1,18 @@
-import { useState } from 'react'
+import { CSSProperties, useState } from 'react'
 
 type CheckboxProps = {
   checked: boolean
   onChange: (isChecked: boolean) => void
+  className: string
+  style?: CSSProperties
 }
 
-const Checkbox: React.FC<CheckboxProps> = ({ checked, onChange }) => {
+const Checkbox: React.FC<CheckboxProps> = ({
+  checked,
+  className,
+  style,
+  onChange,
+}) => {
   const [isChecked, setIsChecked] = useState<boolean>(checked)
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -19,7 +26,8 @@ const Checkbox: React.FC<CheckboxProps> = ({ checked, onChange }) => {
       type='checkbox'
       checked={isChecked}
       onChange={handleChange}
-      className={`lg:h-6 lg:w-6 h-4 w-4 accent-black`}
+      className={className}
+      style={style}
     />
   )
 }
