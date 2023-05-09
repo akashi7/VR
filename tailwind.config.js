@@ -25,7 +25,8 @@ export default {
         'tcolor':"#999999",
         "tred":"#FF334B",
         "mybcc":"#EBEBEB",
-        "mycloror":"#C2C2C2"
+        "mycloror":"#C2C2C2",
+        "onOK":"#F5F5F5"
       }
     },
   },

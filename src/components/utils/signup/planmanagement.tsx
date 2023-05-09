@@ -71,7 +71,11 @@ const PlanManagment: FC = (): ReactElement => {
                 </p>
               </div>
               <div>
-                <CheckBox onChange={handleCheckboxChange} checked={isChecked} />
+                <CheckBox
+                  onChange={handleCheckboxChange}
+                  checked={isChecked}
+                  className={`lg:h-6 lg:w-6 h-4 w-4 accent-black`}
+                />
               </div>
             </div>
             <div className='mt-[15px]'>
@@ -87,20 +91,18 @@ const PlanManagment: FC = (): ReactElement => {
             <div className='flex flex-row mb-[15px] items-center '>
               <img src={okImage} alt='okImage' />
               <p className='pl-[20px] font-semibold'>
-                라이브 제품 20개 등록 가능
+                대기중인 제품 20개 등록 가능
               </p>
             </div>
             <div className='flex flex-row mb-[15px] items-center'>
               <img src={okImage} alt='okImage' />
               <p className='pl-[20px] font-semibold'>
-                라이브 제품 20개 등록 가능
+                제품 상세 옵션 파일 업로드 가능
               </p>
             </div>
             <div className='flex flex-row mb-[15px] items-center'>
               <img src={okImage} alt='okImage' />
-              <p className='pl-[20px] font-semibold'>
-                라이브 제품 20개 등록 가능
-              </p>
+              <p className='pl-[20px] font-semibold'>AR 애널리틱스 이용 가능</p>
             </div>
           </div>
           <div className=' w-[100%] p-[20px] border border-mycloror-600 mb-[20px] rounded-md'>
@@ -114,7 +116,11 @@ const PlanManagment: FC = (): ReactElement => {
                 </p>
               </div>
               <div>
-                <CheckBox onChange={handleCheckboxChange} checked={isChecked} />
+                <CheckBox
+                  onChange={handleCheckboxChange}
+                  checked={isChecked}
+                  className={`lg:h-6 lg:w-6 h-4 w-4 accent-black`}
+                />
               </div>
             </div>
             <div className='mt-[15px]'>
@@ -130,20 +136,18 @@ const PlanManagment: FC = (): ReactElement => {
             <div className='flex flex-row mb-[15px] items-center '>
               <img src={okImage} alt='okImage' />
               <p className='pl-[20px] font-semibold'>
-                라이브 제품 20개 등록 가능
+                대기중인 제품 20개 등록 가능
               </p>
             </div>
             <div className='flex flex-row mb-[15px] items-center'>
               <img src={okImage} alt='okImage' />
               <p className='pl-[20px] font-semibold'>
-                라이브 제품 20개 등록 가능
+                제품 상세 옵션 파일 업로드 가능
               </p>
             </div>
             <div className='flex flex-row mb-[15px] items-center'>
               <img src={okImage} alt='okImage' />
-              <p className='pl-[20px] font-semibold'>
-                라이브 제품 20개 등록 가능
-              </p>
+              <p className='pl-[20px] font-semibold'>AR 애널리틱스 이용 가능</p>
             </div>
           </div>
           <div className=' w-[100%] p-[20px] border border-mycloror-600 mb-[20px] rounded-md'>
@@ -157,7 +161,11 @@ const PlanManagment: FC = (): ReactElement => {
                 </p>
               </div>
               <div>
-                <CheckBox onChange={handleCheckboxChange} checked={isChecked} />
+                <CheckBox
+                  onChange={handleCheckboxChange}
+                  checked={isChecked}
+                  className={`lg:h-6 lg:w-6 h-4 w-4 accent-black`}
+                />
               </div>
             </div>
             <div className='mt-[15px]'>
@@ -173,20 +181,18 @@ const PlanManagment: FC = (): ReactElement => {
             <div className='flex flex-row mb-[15px] items-center '>
               <img src={okImage} alt='okImage' />
               <p className='pl-[20px] font-semibold'>
-                라이브 제품 20개 등록 가능
+                대기중인 제품 20개 등록 가능
               </p>
             </div>
             <div className='flex flex-row mb-[15px] items-center'>
               <img src={okImage} alt='okImage' />
               <p className='pl-[20px] font-semibold'>
-                라이브 제품 20개 등록 가능
+                제품 상세 옵션 파일 업로드 가능
               </p>
             </div>
             <div className='flex flex-row mb-[15px] items-center'>
               <img src={okImage} alt='okImage' />
-              <p className='pl-[20px] font-semibold'>
-                라이브 제품 20개 등록 가능
-              </p>
+              <p className='pl-[20px] font-semibold'>AR 애널리틱스 이용 가능</p>
             </div>
           </div>
           <div className=' w-[100%] p-[20px] border border-mycloror-600 mb-[20px] rounded-md'>
@@ -200,7 +206,11 @@ const PlanManagment: FC = (): ReactElement => {
                 </p>
               </div>
               <div>
-                <CheckBox onChange={handleCheckboxChange} checked={isChecked} />
+                <CheckBox
+                  onChange={handleCheckboxChange}
+                  checked={isChecked}
+                  className={`lg:h-6 lg:w-6 h-4 w-4 accent-black`}
+                />
               </div>
             </div>
             <div className='mt-[15px]'>
@@ -216,20 +226,18 @@ const PlanManagment: FC = (): ReactElement => {
             <div className='flex flex-row mb-[15px] items-center '>
               <img src={okImage} alt='okImage' />
               <p className='pl-[20px] font-semibold'>
-                라이브 제품 20개 등록 가능
+                대기중인 제품 20개 등록 가능
               </p>
             </div>
             <div className='flex flex-row mb-[15px] items-center'>
               <img src={okImage} alt='okImage' />
               <p className='pl-[20px] font-semibold'>
-                라이브 제품 20개 등록 가능
+                제품 상세 옵션 파일 업로드 가능
               </p>
             </div>
             <div className='flex flex-row mb-[15px] items-center'>
               <img src={okImage} alt='okImage' />
-              <p className='pl-[20px] font-semibold'>
-                라이브 제품 20개 등록 가능
-              </p>
+              <p className='pl-[20px] font-semibold'>AR 애널리틱스 이용 가능</p>
             </div>
           </div>
         </div>
