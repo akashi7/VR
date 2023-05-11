@@ -1,8 +1,8 @@
 import { Layout } from 'antd'
 import { FC, ReactElement, useState } from 'react'
 import { useMatch, useNavigate } from 'react-router-dom'
-import { CheckBox } from '../../common/input'
-import { DeleteModal } from '../../modals'
+import { CheckBox } from '../common/input'
+import { GlobalModel } from '../modals'
 
 const BasicInformation: FC = (): ReactElement => {
   const basicInfoMatch = useMatch('/sd/')
@@ -31,7 +31,10 @@ const BasicInformation: FC = (): ReactElement => {
         <p>Hello AR을 이용해 주셔서 감사합니다.</p>
         <div className='flex flex-row mt-5 items-center'>
           <div className='w-[45%]'>
-            <button className='w-full rounded font-medium  text-sm p-[10px] text-center text-black bg-onOK'>
+            <button
+              className='w-full rounded font-medium  text-sm p-[10px] text-center text-black bg-onOK'
+              onClick={() => Toogle()}
+            >
               취소
             </button>
           </div>
@@ -90,7 +93,7 @@ const BasicInformation: FC = (): ReactElement => {
               </button>
             </div>
             {toogle && (
-              <DeleteModal
+              <GlobalModel
                 toogle={toogle}
                 Toogle={Toogle}
                 title='계정 삭제 및 회원 탈퇴합니다.'

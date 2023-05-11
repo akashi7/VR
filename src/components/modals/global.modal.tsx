@@ -9,7 +9,7 @@ interface Props {
   Component: () => ReactElement
 }
 
-const DeleteModal: FC<Props> = ({
+const GlobalModal: FC<Props> = ({
   title,
   width,
   toogle,
@@ -32,4 +32,4 @@ const DeleteModal: FC<Props> = ({
   )
 }
 
-export default DeleteModal
+export default GlobalModal

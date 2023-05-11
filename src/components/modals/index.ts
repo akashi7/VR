@@ -1,3 +1,3 @@
-import DeleteModal from './delete.modal'
+import GlobalModel from './global.modal'
 
-export { DeleteModal }
+export { GlobalModel }
