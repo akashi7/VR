@@ -1,4 +1,4 @@
-import { CSSProperties, useState } from 'react'
+import { CSSProperties, useState, FC } from 'react'
 
 type CheckboxProps = {
   checked: boolean
@@ -7,7 +7,7 @@ type CheckboxProps = {
   style?: CSSProperties
 }
 
-const Checkbox: React.FC<CheckboxProps> = ({
+const Checkbox: FC<CheckboxProps> = ({
   checked,
   className,
   style,
