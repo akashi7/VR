@@ -32,7 +32,11 @@ const SignUpPage: FC = (): ReactElement => {
             <p className='pl-[10px] font-bold'>카카오로 가입</p>
           </div>
           <div className='flex flex-row items-center  justify-center lg:m-[15px] mb-[8px] lg:mb-[0px] w-[100%]  p-[10px] border-solid border-2 border-lgborder'>
-            <img src={google} alt='google' className='lg:w-[4%] w-[7%] ' />
+            <img
+              src={google}
+              alt='google'
+              className='md:w-[3%] w-[4%] xl:w-[4%] '
+            />
             <p className='pl-[10px] font-bold'>구글로 가입</p>
           </div>
           <div className='flex flex-row items-center  justify-center lg:m-[15px]  mb-[8px] lg:mb-[0px] w-[100%]  p-[10px] border-solid border-2 border-lgborder'>

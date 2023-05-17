@@ -44,9 +44,9 @@ const PlanManagment: FC = (): ReactElement => {
   }
 
   return (
-    <Layout className='lg:p-[10px] p-[18px]  bg-white h-full lg:h-screen'>
-      <div className='mx-auto lg:w-[85%] '>
-        <div className='mb-[20px] lg:hidden block'>
+    <Layout className='xl:p-[10px] p-[18px] md:p-[20px]  bg-white h-full lg:h-screen'>
+      <div className='mx-auto md:w-[100%] xl:w-[85%] '>
+        <div className='mb-[20px] xl:hidden block'>
           <h1 className='font-semibold text-xl text-black '>마이 페이지</h1>
           <div className='flex flex-row items-center mt-[15px] '>
             <div
@@ -95,7 +95,7 @@ const PlanManagment: FC = (): ReactElement => {
             </button>
           </div>
         </div>
-        <div className='mt-[20px] lg:mt-[40px] lg:grid lg:grid-cols-4 gap-5 lg:h-[600px]'>
+        <div className='mt-[20px] lg:mt-[40px] xl:grid  xl:grid-cols-4 xl:gap-5 xl:h-[600px]'>
           <Plans
             handleCheckboxChange={handleCheckboxChange}
             isChecked={isChecked}
@@ -172,7 +172,7 @@ const PlanManagment: FC = (): ReactElement => {
         )}
         <div>
           <button
-            className={`w-full block lg:hidden ${
+            className={`w-full block xl:hidden ${
               isChecked
                 ? 'bg-black text-white'
                 : 'bg-mybcc text-mycloror border-solid border-2 border-navactive-800'

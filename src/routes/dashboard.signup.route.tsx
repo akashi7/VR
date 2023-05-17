@@ -16,7 +16,7 @@ const SignUpDashboardRoute: FC = (): ReactElement => {
         </div>
         <div className='mt-[50px] w-full h-full '>
           <SignUpSiderBar />
-          <div className='lg:w-[calc(100%-300px)] w-full lg:mt-[50px] mt-[70px]  lg:fixed right-0 h-full '>
+          <div className='xl:w-[calc(100%-300px)] w-full lg:mt-[50px] mt-[70px]   xl:fixed right-0 h-full '>
             <ContentWrapper>
               <Routes>
                 <Route path='/' element={<BasicInformation />} />
