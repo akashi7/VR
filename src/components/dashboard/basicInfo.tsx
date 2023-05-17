@@ -49,8 +49,8 @@ const BasicInformation: FC = (): ReactElement => {
   }
 
   return (
-    <Layout className='lg:p-[10px] p-[18px]  bg-white'>
-      <div className='mx-auto lg:w-[70%] w-full  '>
+    <Layout className='xl:p-[10px] p-[18px]  bg-white  '>
+      <div className='mx-auto xl:w-[70%] md:w-[90%] w-full md:mt-[40px] mt-0 xl:mt-0 '>
         {Withdrawal ? (
           <>
             <div className='mb-[15px]'>
@@ -104,7 +104,7 @@ const BasicInformation: FC = (): ReactElement => {
           </>
         ) : (
           <>
-            <div className='mb-[20px] lg:hidden block'>
+            <div className='mb-[20px] xl:hidden block'>
               <h1 className='font-semibold text-xl text-black '>마이 페이지</h1>
               <div className='flex flex-row items-center mt-[15px] '>
                 <div
@@ -129,7 +129,7 @@ const BasicInformation: FC = (): ReactElement => {
                 </div>
               </div>
             </div>
-            <div className='mb-[30px]'>
+            <div className='mb-[30px]  md:mt-[40px] '>
               <h1 className='font-bold lg:text-3xl text-black text-2xl'>
                 기본 정보
               </h1>

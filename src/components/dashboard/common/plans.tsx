@@ -4,19 +4,19 @@ import okImage from '../../../assets/images/ok.png'
 
 type PlansProps = {
   handleCheckboxChange: (isChecked: boolean) => void
+  handlePlanSelect: (index: number) => void
   isChecked: boolean
   titles: string[]
   selectedPlanIndex: number
-  handlePlanSelect: (index: number) => void
   index: number
 }
 
 const Plans: FC<PlansProps> = ({
   handleCheckboxChange,
+  handlePlanSelect,
   isChecked,
   titles,
   selectedPlanIndex,
-  handlePlanSelect,
   index,
 }): ReactElement => {
   return (
@@ -48,7 +48,7 @@ const Plans: FC<PlansProps> = ({
       <div className='mt-[15px]'>
         <p className='text-hblue font-semibold text-xl'>{titles[2]}</p>
       </div>
-      <div className='border-t border-navactive-400 mt-[20px] mb-[20px] lg:mt-[40px] lg:mb-[40px]   '></div>
+      <div className='border-t border-navactive-400 mt-[20px] mb-[20px] lg:mt-[40px] lg:mb-[40px]'></div>
       <div className='flex flex-row mb-[15px] items-center '>
         <img src={okImage} alt='okImage' />
         <p className='pl-[20px] font-semibold'>{titles[3]}</p>
