@@ -22,9 +22,9 @@ const videos =
 const HomePage: FC = (): ReactElement => {
   return (
     <Layout className='w-full h-[100%] bg-white'>
-      <div className='p-[8px] lg:p-[0px] xl:p-[30px] '>
-        <div className='flex flex-col lg:mt-[-50px] mt-[60px]  w-full lg:h-[720px] lg:flex-row items-center lg:w-[80%] lg:mx-auto  lg:p-[0px] '>
-          <div className=' w-full lg:mt-[0px] mt-[15px] md:w-[80%] lg:w-[100%]  xl:w-[60%]  md:pl-[0px]   md:text-center xl:text-left'>
+      <div className='p-[8px] lg:p-[0px] xl:p-[30px] xl:mx-[130px] '>
+        <div className='flex flex-col lg:mt-[-50px] mt-[60px]  w-full lg:h-[720px]  lg:flex-row items-center lg:w-[80%] lg:mx-auto  lg:p-[0px] '>
+          <div className=' w-full lg:mt-[0px] mt-[15px] md:w-[80%] lg:w-[100%]  xl:w-[50%]  md:pl-[0px] lg:text-left  md:text-center xl:text-left'>
             <div className='lg:mb-[15px] w-full'>
               <p className='font-bold lg:text-3xl text-black md:text-2xl text-base w-full'>
                 hello, ar과 함께 하는
@@ -42,11 +42,15 @@ const HomePage: FC = (): ReactElement => {
               </p>
             </div>
           </div>
-          <div className='w-full md:pl-[0px] p-[10px] lg:p-[0px] lg:flex lg:justify-end'>
-            <img src={mockup} alt='mockup' className=' md:w-[100%]  w-[100%]' />
+          <div className='w-full md:pl-[0px] p-[10px] lg:p-[0px]  lg:flex lg:justify-end  xl:flex xl:justify-end'>
+            <img
+              src={mockup}
+              alt='mockup'
+              className=' md:w-[100%]  w-[100%] xl:w-[80%] '
+            />
           </div>
         </div>
-        <div className='md:mb-[50px] xl:mb-[136px]'></div>
+        <div className='md:mb-[50px] lg:mb-[10px] xl:mb-[136px]'></div>
         <div className='flex  flex-col-reverse  mt-[15px] lg:flex-row  items-center w-full lg:w-[80%] lg:mx-auto  lg:p-[0px]'>
           <div className='w-[100%]  md:pl-[0px] lg:text-left  md:text-center xl:text-left'>
             <div className='lg:mb-[10px] mt-[10px] xl:mt-[0px]'>
@@ -69,35 +73,35 @@ const HomePage: FC = (): ReactElement => {
               </p>
             </div>
           </div>
-          <div className='w-[70%] xl:w-[100%] md:w-[60%] lg:flex lg:justify-end md:pl-[0px]  mb-[30px] mt-[20px] lg:mt-[0px]  lg:mb-[0px]'>
+          <div className='w-[70%] xl:w-[100%] md:w-[60%] xl:justify-center  lg:flex lg:justify-end md:pl-[0px]  mb-[30px] mt-[20px] lg:mt-[0px]  lg:mb-[0px]'>
             <img
               src={imageOne}
               alt='imageOne'
-              className=' md:w-[100%] xl:w-[70%] w-fit '
+              className=' md:w-[100%] xl:w-[60%] w-fit '
             />
           </div>
         </div>
-        <div className='md:mb-[120px] xl:mb-[236px] mt-[50px] lg:mt-[0px]'></div>
+        <div className='md:mb-[120px] lg:mb-[200px]  xl:mb-[236px] mt-[50px] lg:mt-[0px]'></div>
         <div className='flex  flex-col w-full  lg:flex-row items-center lg:w-[80%] lg:mx-auto  lg:p-[0px] '>
-          <div className='md:w-[50%] xl:w-[65%] w-[100%]  mb-[50px] lg:mb-[0px]'>
-            <div className='flex justify-between '>
-              <div className='bg-hgrey w-full m-[5px]  xl:m-[5px] lg:m-[10px] rounded-lg'>
+          <div className='md:w-[50%] xl:w-[50%] w-[100%]  mb-[50px] lg:mb-[0px]'>
+            <div className='flex justify-between xl:w-[60%] w-[80%] md:w-auto  mx-auto xl:m-0'>
+              <div className='bg-hgrey w-full xl:w-[50%] m-[5px]  xl:m-[5px] lg:m-[2px] rounded-lg'>
                 <img src={blue} alt='blue' />
               </div>
-              <div className='bg-hgrblue  w-full m-[5px] xl:m-[5px] lg:m-[10px] rounded-lg'>
+              <div className='bg-hgrblue  w-full xl:w-[50%] m-[5px] xl:m-[5px] lg:m-[2px] rounded-lg'>
                 <img src={green} alt='green' />
               </div>
             </div>
-            <div className='flex justify-between '>
-              <div className='bg-hgreen xl:w-full m-[5px] xl:m-[5px] lg:m-[10px] rounded-lg'>
+            <div className='flex justify-between xl:w-[60%] w-[80%] md:w-auto  mx-auto xl:m-0 '>
+              <div className='bg-hgreen  xl:w-[50%] w-full m-[5px] xl:m-[5px] lg:m-[2px] rounded-lg'>
                 <img src={pink} alt='pink' />
               </div>
-              <div className='bg-hgray xl:w-full m-[5px] xl:m-[5px] lg:m-[10px] rounded-lg'>
+              <div className='bg-hgray xl:w-[50%] w-full m-[5px] xl:m-[5px] lg:m-[2px] rounded-lg'>
                 <img src={white} alt='white' />
               </div>
             </div>
           </div>
-          <div className='w-full  mt-[10px] lg:mt-[0px] md:pl-[0px] md:text-center lg:text-left  lg:flex lg:justify-end xl:justify-center  xl:text-left  xl:pl-[150px]'>
+          <div className='w-full xl:w-[50%]  mt-[10px] xl:p-[10px] lg:mt-[0px] md:pl-[0px] md:text-center lg:text-left  lg:flex lg:justify-end xl:justify-center  xl:text-left  '>
             <div>
               <div className='lg:mb-[10px] mb-[10px]'>
                 <p className='text-sm text-hpurple break-all'>
@@ -144,11 +148,11 @@ const HomePage: FC = (): ReactElement => {
               </p>
             </div>
           </div>
-          <div className='w-[50%] xl:w-full md:w-full   md:flex md:justify-center xl:justify-center lg:justify-center md:text-center xl:text-left  md:pl-[0px] mt-[50px] lg:mt-[0px]'>
+          <div className='w-[50%] xl:w-full md:w-full   md:flex md:justify-center xl:justify-center lg:justify-end md:text-center xl:text-left  md:pl-[0px] mt-[50px] lg:mt-[0px]'>
             <img
               src={imagethree}
               alt='imagethre'
-              className=' md:w-[40%] xl:w-[50%] lg:w-[50%] w-full '
+              className=' md:w-[40%] xl:w-[50%] lg:w-[60%] w-full '
             />
           </div>
         </div>
@@ -162,7 +166,7 @@ const HomePage: FC = (): ReactElement => {
         <div className='flex  flex-col lg:flex-row lg:items-center lg:w-[80%] w-full lg:mx-auto  lg:p-[0px]'>
           <div className='w-[100%]  flex flex-col  '>
             <div className='md:pl-[0px] mb-[60px] lg:mb-[0px] xl:flex xl:justify-center '>
-              <div>
+              <div className='w-[50%] lg:w-auto md:w-auto xl:w-auto  mx-auto '>
                 <div className='flex justify-center bg-hroundy rounded-full mx-auto xl:w-[260px] md:w-[290px] w-[66%] xl:h-[240px] h-fit lg:p-[65px] p-[45px] '>
                   <img
                     src={salyeight}
@@ -194,7 +198,7 @@ const HomePage: FC = (): ReactElement => {
           </div>
           <div className='w-[100%] flex flex-col   mt-[100px] lg:mt-[0px] md:pl-[20px] xl:pl-[0px]'>
             <div className=' md:pr-[0px] mb-[30px] lg:mb-[0px] xl:flex xl:justify-center'>
-              <div>
+              <div className='w-[50%] lg:w-auto md:w-auto xl:w-auto mx-auto '>
                 <div className='flex justify-center bg-hroundp rounded-full mx-auto xl:w-[260px] md:w-[290px] w-[80%] h-fit xl:h-[240px] lg:p-[45px] p-[45px]'>
                   <img
                     src={salysix}
@@ -305,7 +309,7 @@ const HomePage: FC = (): ReactElement => {
             </div>
           </div>
         </div>
-        <div className='lg:mb-[200px] mb-[100px]'></div>
+        <div className='lg:mb-[200px] mb-[100px] xl:mb-[100px]'></div>
       </div>
       <div className='bg-hfooter w-full'>
         <div className='lg:relative w-full'>
