@@ -167,7 +167,7 @@ const HomePage: FC = (): ReactElement => {
           <div className='w-[100%]  flex flex-col  '>
             <div className='md:pl-[0px] mb-[60px] lg:mb-[0px] xl:flex xl:justify-center '>
               <div className='w-[80%] lg:w-auto md:w-auto xl:w-auto  mx-auto '>
-                <div className='flex justify-center bg-hroundy rounded-full mx-auto xl:w-[260px] md:w-[290px] w-[66%] xl:h-[240px] h-fit lg:p-[65px] p-[45px] '>
+                <div className='flex justify-center bg-hroundy rounded-full mx-auto xl:w-[260px] md:w-[290px] w-[66%] xl:h-[240px] h-fit lg:p-[65px] p-[55px] '>
                   <img
                     src={salyeight}
                     alt='salyeight'
@@ -199,7 +199,7 @@ const HomePage: FC = (): ReactElement => {
           <div className='w-[100%] flex flex-col   mt-[100px] lg:mt-[0px] md:pl-[20px] xl:pl-[0px]'>
             <div className=' md:pr-[0px] mb-[30px] lg:mb-[0px] xl:flex xl:justify-center'>
               <div className='w-[65%] lg:w-auto md:w-auto xl:w-auto mx-auto '>
-                <div className='flex justify-center bg-hroundp rounded-full mx-auto xl:w-[260px] md:w-[290px] w-[80%] h-fit xl:h-[240px] lg:p-[45px] p-[45px]'>
+                <div className='flex justify-center bg-hroundp rounded-full mx-auto xl:w-[260px] md:w-[290px] w-[80%] h-fit xl:h-[240px] lg:p-[45px] p-[55px]'>
                   <img
                     src={salysix}
                     alt='salysix'
