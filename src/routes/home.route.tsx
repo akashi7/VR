@@ -11,7 +11,7 @@ const HomeRoutes: FC = (): ReactElement => {
   return (
     <Layout className='h-[100%] bg-white'>
       <div className='h-[100%] bg-white'>
-        <div className='fixed w-full border-b-2 border-navactive'>
+        <div className='fixed w-full border-b-2 border-navactive z-5'>
           <HomeNavBar />
         </div>
         <ContentWrapper>

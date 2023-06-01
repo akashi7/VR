@@ -4,8 +4,8 @@ import { Route, Routes } from 'react-router-dom'
 import ContentWrapper from '../components/common/contentwrapper/homewrapper'
 import DashNavBar from '../components/common/header/dashboardheader'
 import SignUpSiderBar from '../components/common/sidebar/signup.sidebar'
-import BasicInformation from '../components/dashboard/basicInfo'
-import PlanManagment from '../components/dashboard/planmanagement'
+import BasicInformation from '../components/dashboard/account/basicInfo'
+import PlanManagment from '../components/dashboard/account/planmanagement'
 
 const SignUpDashboardRoute: FC = (): ReactElement => {
   return (

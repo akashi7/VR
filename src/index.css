@@ -1,17 +1,94 @@
+@font-face {
+  font-family: 'Pretendard';
+  src: url(./assets/fonts/Pretendard-Black.ttf),
+    url(./assets/fonts/Pretendard-Bold.ttf),
+    url(./assets/fonts/Pretendard-ExtraBold.ttf),
+    url(./assets/fonts/Pretendard-ExtraLight.ttf),
+    url(./assets/fonts/Pretendard-Light.ttf),
+    url(./assets/fonts/Pretendard-Medium.ttf),
+    url(./assets/fonts/Pretendard-Regular.ttf),
+    url(./assets/fonts/Pretendard-SemiBold.ttf),
+    url(./assets/fonts/Pretendard-Thin.ttf);
+  font-weight: normal;
+  font-style: normal;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Pretendard', sans-serif, Helvetica, sans-serif, Arial;
   height: 100%;
   overflow-y: auto;
 }
 html {
   height: 100%;
+  scroll-behavior: smooth;
+}
+
+/*antd*/
+
+.classMenu .ant-menu-item:hover {
+  background-color: transparent !important;
+}
+
+.classMenu .ant-menu-item-selected {
+  background-color: #f8f8f8;
+  color: black;
+  border-radius: 0%;
+}
+.classMenu .ant-menu-item {
+  margin-left: -17px !important;
+}
+
+.classMenu .ant-menu-root:hover .ant-menu-submenu-title {
+  background-color: transparent !important;
+}
+
+.classMenu .ant-menu-submenu:hover > .ant-menu-submenu-title,
+.classMenu .ant-menu-item:hover {
+  background-color: #f8f8f8 !important;
+}
+/*progres Bar*/
+
+.custom-progress .ant-progress-bg {
+  border-radius: 0 !important;
+  height: 15px !important;
+}
+
+.custom-progress .ant-progress-inner {
+  border-radius: 0;
+}
+
+.custom-progress .ant-progress-bg {
+  background-color: #4270ed;
+}
+
+.custom-table .ant-table-thead > tr > th {
+  background-color: #fafafa;
+  color: black;
+}
+
+.custom-table .ant-table-thead > tr > th {
+  border-right: none;
+}
+
+.custom-scrollbar {
+  overflow-y: scroll;
+  scrollbar-width: thin;
+  scrollbar-color: #888888 #f5f5f5;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #888888;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background-color: #f5f5f5;
 }

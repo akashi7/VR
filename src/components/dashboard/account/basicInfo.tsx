@@ -1,8 +1,8 @@
 import { Layout } from 'antd'
 import { FC, ReactElement, useState } from 'react'
 import { useMatch, useNavigate } from 'react-router-dom'
-import { CheckBox } from '../common/input'
-import { GlobalModel } from '../modals'
+import { CheckBox } from '../../common/input'
+import { GlobalModel } from '../../modals'
 
 const BasicInformation: FC = (): ReactElement => {
   const basicInfoMatch = useMatch('/sd/')

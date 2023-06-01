@@ -1,8 +1,8 @@
 import { Layout } from 'antd'
 import { FC, ReactElement, useState } from 'react'
 import { useMatch, useNavigate } from 'react-router-dom'
-import Plans from './common/plans'
-import { GlobalModel } from '../modals'
+import { GlobalModel } from '../../modals'
+import Plans from '../common/account/plans'
 
 const PlanManagment: FC = (): ReactElement => {
   const basicInfoMatch = useMatch('/sd/')

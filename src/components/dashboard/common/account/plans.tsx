@@ -1,6 +1,6 @@
 import { FC, ReactElement } from 'react'
-import { CheckBox } from '../../common/input'
-import okImage from '../../../assets/images/ok.png'
+import okImage from '../../../../assets/images/ok.png'
+import { CheckBox } from '../../../common/input'
 
 type PlansProps = {
   handleCheckboxChange: (isChecked: boolean) => void
