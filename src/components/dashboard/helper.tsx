@@ -1,5 +1,6 @@
 import { Progress } from 'antd'
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const distributionColums = [
   {
     title: '체류 시간',
