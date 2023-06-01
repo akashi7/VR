@@ -25,8 +25,8 @@ const HomeNavBar: FC = (): ReactElement => {
 
   return (
     <>
-      <Header
-        className='w-full flex justify-between  items-center h-[50px]'
+      <div
+        className='w-full flex justify-between  items-center h-[50px] p-[10px]'
         style={{ background: 'white' }}
       >
         <div
@@ -50,7 +50,7 @@ const HomeNavBar: FC = (): ReactElement => {
             onClick={ToogleDrawer}
           />
         </div>
-      </Header>
+      </div>
       {openDrawer && (
         <Drawer
           placement='right'

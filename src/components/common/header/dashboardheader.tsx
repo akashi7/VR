@@ -1,10 +1,9 @@
 import { CloseOutlined, MenuOutlined } from '@ant-design/icons'
-import { Drawer, Layout } from 'antd'
+import { Drawer } from 'antd'
 import { FC, ReactElement, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 const DashNavBar: FC = (): ReactElement => {
-  const { Header } = Layout
   const navigate = useNavigate()
   const [openDrawer, setDrawer] = useState<boolean>(false)
 
@@ -25,10 +24,7 @@ const DashNavBar: FC = (): ReactElement => {
 
   return (
     <>
-      <Header
-        className='w-full flex justify-between  items-center h-[50px]'
-        style={{ background: 'white' }}
-      >
+      <div className='w-full flex justify-between  items-center   p-[5px]'>
         <div
           className='text-base font-bold hover:cursor-pointer'
           onClick={() => navigate('/')}
@@ -53,7 +49,7 @@ const DashNavBar: FC = (): ReactElement => {
             onClick={ToogleDrawer}
           />
         </div>
-      </Header>
+      </div>
       {openDrawer && (
         <Drawer
           placement='right'
