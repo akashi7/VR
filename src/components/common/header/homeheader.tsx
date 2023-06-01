@@ -1,10 +1,9 @@
 import { CloseOutlined, MenuOutlined } from '@ant-design/icons'
-import { Drawer, Layout } from 'antd'
+import { Drawer } from 'antd'
 import { FC, ReactElement, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 const HomeNavBar: FC = (): ReactElement => {
-  const { Header } = Layout
   const navigate = useNavigate()
   const [openDrawer, setDrawer] = useState<boolean>(false)
 

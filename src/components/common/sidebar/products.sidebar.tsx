@@ -1,5 +1,5 @@
 import { Layout, Menu } from 'antd'
-import { FC, ReactElement, useState } from 'react'
+import { FC, ReactElement, SetStateAction, useState } from 'react'
 import { Link, useLocation, useMatch } from 'react-router-dom'
 import { productDasboardRoutes } from '../../../routes/menu.routes'
 
@@ -12,8 +12,7 @@ const ProductSiderBar: FC = (): ReactElement => {
 
   const [selectedKey, setSelectedKey] = useState<string | null>(null)
 
-  const handleMenuClick = (e: any) => {
-    console.log(typeof e)
+  const handleMenuClick = (e: { key: SetStateAction<string | null> }) => {
     setSelectedKey(e.key)
   }
 
