@@ -25,8 +25,8 @@ const SignUpPage: FC = (): ReactElement => {
   useEffect(() => {
     if (!window.Kakao) {
       // Prevent initializing multiple times
-      window.Kakao.init('7210b04e6ea97e6951d5924383aa1990')
     }
+    window.Kakao.init('7210b04e6ea97e6951d5924383aa1990')
   }, [])
 
   const loginWithKakao = (): void => {
