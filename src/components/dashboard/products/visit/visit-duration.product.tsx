@@ -1,8 +1,8 @@
 import { Layout } from 'antd'
 import { FC, ReactElement, useState } from 'react'
-import { Input } from '../../common/input'
-import DailyAverage from '../common/products/average'
-import DistributionTime from '../common/products/distribution'
+import { Input } from '../../../common/input'
+import DailyAverage from '../../common/products/average'
+import DistributionTime from '../../common/products/distribution'
 
 const VisitDuration: FC = (): ReactElement => {
   const [inputValue, setInputValue] = useState('')

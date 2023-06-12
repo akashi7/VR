@@ -1,16 +1,50 @@
 import { Layout } from 'antd'
-import { FC, ReactElement } from 'react'
+import { FC, ReactElement, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import naver from '../../../assets/images/Logo_Naver_24.png'
 import facebook from '../../../assets/images/facebook.png'
 import google from '../../../assets/images/google.png'
 import kakao from '../../../assets/images/kakao.png'
-import { useNavigate } from 'react-router-dom'
+
+declare global {
+  interface Window {
+    Kakao: any
+  }
+}
 
 const SignUpPage: FC = (): ReactElement => {
   const navigate = useNavigate()
 
   function navigating(): void {
     navigate('/login')
+  }
+
+  const apiKey = import.meta.env.VITE_API_KEY
+  const API_KEY = `${apiKey}`
+
+  useEffect(() => {
+    if (!window.Kakao) {
+      // Prevent initializing multiple times
+      window.Kakao.init(API_KEY)
+    }
+  }, [])
+
+  const loginWithKakao = (): void => {
+    if (window.Kakao && window.Kakao.Auth) {
+      window.Kakao.Auth.login({
+        success: (authObj: any) => {
+          alert(JSON.stringify(authObj))
+          console.log(JSON.stringify(authObj))
+        },
+        fail: (err: any) => {
+          alert(JSON.stringify(err))
+        },
+      })
+    } else {
+      console.error(
+        'Kakao SDK is not initialized or Auth module is unavailable.'
+      )
+    }
   }
 
   return (
@@ -27,7 +61,10 @@ const SignUpPage: FC = (): ReactElement => {
             <img src={naver} alt='naver' />
             <p className='pl-[10px] font-bold'>네이버로 가입</p>
           </div>
-          <div className='flex flex-row items-center  justify-center lg:m-[15px] mb-[8px] lg:mb-[0px] w-[100%]  p-[10px] border-solid border-2 border-lgborder'>
+          <div
+            className='flex flex-row items-center  justify-center lg:m-[15px] mb-[8px] lg:mb-[0px] w-[100%]  p-[10px] border-solid border-2 border-lgborder'
+            onClick={() => loginWithKakao()}
+          >
             <img src={kakao} alt='kakao' />
             <p className='pl-[10px] font-bold'>카카오로 가입</p>
           </div>

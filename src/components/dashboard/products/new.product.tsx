@@ -4,6 +4,11 @@ import chair from '../../../assets/images/c2.png'
 import { Input } from '../../common/input'
 import Plus from '../../../assets/images/Plus.png'
 import Minus from '../.././../assets/images/Minus.png'
+import Vector from '../.././../assets/images/newVector.png'
+import { handleToggle } from '../../../state/slices/sidebar.slice'
+import { RootState } from '../../../state'
+import { useSelector, useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 const NewProduct: FC = (): ReactElement => {
   const [inputValue, setInputValue] = useState(
@@ -14,9 +19,23 @@ const NewProduct: FC = (): ReactElement => {
     setInputValue(value)
   }
 
+  const navigate = useNavigate()
+
+  const dispatch = useDispatch()
+  const { toggle } = useSelector((state: RootState) => state.sidebar)
+
   return (
-    <Layout className='bg-white'>
-      <div className='flex flex-row w-[80%] mx-auto p-[40px]'>
+    <Layout className='bg-white relative '>
+      <div
+        className={`left-7 fixed top-[90px] ${!toggle ? 'hidden' : 'block'}`}
+      >
+        <img
+          src={Vector}
+          alt='vector'
+          onMouseOver={() => dispatch(handleToggle())}
+        />
+      </div>
+      <div className='flex flex-row w-[80%] mx-auto p-[40px] mb-[40px]'>
         <div className='relative w-[50%] '>
           <img src={chair} alt='chair' className='w-fit' />
           <div className=' absolute  bottom-2   right-2  flex justify-around  '>
@@ -24,7 +43,7 @@ const NewProduct: FC = (): ReactElement => {
             <img src={Minus} alt='minus' className='m-1' />
           </div>
         </div>
-        <div className='relative w-[35%]   p-[20px] '>
+        <div className={`relative  p-[20px] ${toggle ? 'w-[35%]' : 'w-[40%]'}`}>
           <div className='mb-[20px]'>
             <h1 className='font-bold lg:text-3xl text-black text-xl'>
               새 제품 등록하기
@@ -98,7 +117,10 @@ const NewProduct: FC = (): ReactElement => {
               <button className='font-medium  text-sm p-[10px] text-center w-[30%] text-black bg-onOK'>
                 취소
               </button>
-              <button className='font-medium ml-[10px] text-sm p-[10px]  rounded text-center w-[90%] bg-black text-white'>
+              <button
+                className='font-medium ml-[10px] text-sm p-[10px]  rounded text-center w-[90%] bg-black text-white'
+                onClick={() => navigate('/pr/finished')}
+              >
                 등록하기
               </button>
             </div>

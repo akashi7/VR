@@ -162,3 +162,114 @@ export const AverageListData = [
     totalStayTime: '33시간 33분 33초',
   },
 ]
+
+export const UvCardsListData = [
+  {
+    id: 1,
+    title: '방문자수',
+    number: '333',
+    subNumber: '333',
+    indication: '↑ 333 (33.3%)',
+  },
+  {
+    id: 2,
+    title: '방문횟수',
+    number: '333',
+    subNumber: '333',
+    indication: '↑ 333 (33.3%)',
+  },
+  {
+    id: 3,
+    title: '방문횟수',
+    number: '333',
+    subNumber: '333',
+    indication: '↑ 333 (33.3%)',
+  },
+  {
+    id: 4,
+    title: '방문횟수',
+    number: '333',
+    subNumber: '333',
+    indication: '↑ 333 (33.3%)',
+  },
+  {
+    id: 5,
+    title: '방문횟수',
+    number: '333',
+    subNumber: '333',
+    indication: '↑ 333 (33.3%)',
+  },
+]
+export const DistributionPeriodCardsListData = [
+  {
+    id: 1,
+    title: '최대 방문자수',
+    number: '33',
+    date: '22:00 2022.12.30',
+  },
+  {
+    id: 2,
+    title: '최소 방문자수',
+    number: '33',
+    date: '22:00 2022.12.30',
+  },
+  {
+    id: 3,
+    title: '최소 방문자수',
+    number: '33',
+    date: '22:00 2022.12.30',
+  },
+  {
+    id: 4,
+    title: '최소 방문자수',
+    number: '33',
+    date: '22:00 2022.12.30',
+  },
+  {
+    id: 5,
+    title: '최소 방문자수',
+    subs: [
+      {
+        id: 1,
+        title: '방문자수',
+        number: '33',
+      },
+      {
+        id: 2,
+        title: '방문자수',
+        number: '33',
+      },
+    ],
+  },
+]
+
+export const InflowCardsListData = [
+  {
+    id: 1,
+    title: '검색 유입수',
+    number: '333',
+    subNumber: '333',
+    indication: '↑ 333 (33.3%)',
+  },
+  {
+    id: 2,
+    title: '전체 유입수',
+    number: '333',
+    subNumber: '333',
+    indication: '↑ 333 (33.3%)',
+  },
+  {
+    id: 3,
+    title: '전체 유입수',
+    number: '3333.33%3',
+    subNumber: '33.33%',
+    indication: '↑ 3.33%p (3.3%)',
+  },
+  {
+    id: 4,
+    title: '전체 유입수',
+    number: '네이버 광고 / 사이트 검색 광고33.33%',
+    subNumber: '33.33%',
+    indication: '↑ 3.33%p (3.3%)',
+  },
+]

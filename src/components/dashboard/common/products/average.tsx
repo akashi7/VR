@@ -7,7 +7,7 @@ import { AvearageColums } from '../../helper'
 import { AverageListData } from '../../utils'
 
 const DailyAverage: FC = (): ReactElement => {
-  const [inputValue, setInputValue] = useState('')
+  const [inputValue, setInputValue] = useState<string>('')
   const [isChecked, setIsChecked] = useState<boolean>(false)
   const handleCheckboxChange = (isChecked: boolean) => {
     setIsChecked(isChecked)
