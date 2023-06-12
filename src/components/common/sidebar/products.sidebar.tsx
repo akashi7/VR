@@ -1,7 +1,10 @@
 import { Layout, Menu } from 'antd'
 import { FC, ReactElement, SetStateAction, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link, useLocation, useMatch } from 'react-router-dom'
 import { productDasboardRoutes } from '../../../routes/menu.routes'
+import { RootState } from '../../../state'
+import { handleToggle } from '../../../state/slices/sidebar.slice'
 
 const { Sider } = Layout
 
@@ -9,6 +12,9 @@ const ProductSiderBar: FC = (): ReactElement => {
   const newProducts = useMatch('/pr/k')
   const liveProducts = useMatch('/pr/')
   const location = useLocation()
+
+  const dispatch = useDispatch()
+  const { toggle } = useSelector((state: RootState) => state.sidebar)
 
   const [selectedKey, setSelectedKey] = useState<string | null>(null)
 
@@ -22,15 +28,18 @@ const ProductSiderBar: FC = (): ReactElement => {
     marginLeft: '-17px',
   }
 
+  function Toogle(): void {
+    dispatch(handleToggle())
+  }
+
   return (
     <Sider
-      width={300}
-      className='border-t-2 border-r-2 border-navactive bg-white lg:block hidden'
+      width={toggle ? 0 : 300}
+      className={`border-t-2 border-r-2 border-navactive bg-white`}
       style={{
         backgroundColor: 'white',
-        // height: 'calc(100vh - 64px)',
         position: 'sticky',
-        // top: 64,
+        visibility: toggle ? 'hidden' : 'visible',
       }}
     >
       <div className='p-[10px] mt-[15px]'>
@@ -38,7 +47,8 @@ const ProductSiderBar: FC = (): ReactElement => {
       </div>
       <div className='flex flex-col h-full overflow-y-auto'>
         <Link
-          to={'/pr/k'}
+          to={'/pr/new'}
+          onClick={() => Toogle()}
           className={
             newProducts
               ? 'bg-navactive text-black p-[10px] font-semibold hover:text-black'

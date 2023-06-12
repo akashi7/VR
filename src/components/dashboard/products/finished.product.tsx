@@ -1,8 +1,12 @@
 import { Layout } from 'antd'
 import { FC, ReactElement, useState } from 'react'
+import vector from '../../../assets/images/Vectortwo.png'
 import gemStone from '../../../assets/images/gem-stone.png'
 import { Input } from '../../common/input'
-import vector from '../../../assets/images/Vectortwo.png'
+import { handleToggle } from '../../../state/slices/sidebar.slice'
+import { RootState } from '../../../state'
+import { useSelector, useDispatch } from 'react-redux'
+import Vector from '../.././../assets/images/newVector.png'
 
 const FinishedAppointment: FC = (): ReactElement => {
   const [inputValue, setInputValue] = useState(
@@ -13,9 +17,21 @@ const FinishedAppointment: FC = (): ReactElement => {
     setInputValue(value)
   }
 
+  const dispatch = useDispatch()
+  const { toggle } = useSelector((state: RootState) => state.sidebar)
+
   return (
-    <Layout className='bg-white  relative    h-screen w-full '>
-      <div className='w-[50%]  mx-auto  absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2'>
+    <Layout className='bg-white  relative h-[100%] w-full '>
+      <div
+        className={`left-7 fixed top-[90px] ${!toggle ? 'hidden' : 'block'} `}
+      >
+        <img
+          src={Vector}
+          alt='vector'
+          onMouseOver={() => dispatch(handleToggle())}
+        />
+      </div>
+      <div className='w-[50%]  absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2'>
         <div className='flex justify-center'>
           <img src={gemStone} alt='gemstone' />
         </div>
