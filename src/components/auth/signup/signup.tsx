@@ -25,7 +25,7 @@ const SignUpPage: FC = (): ReactElement => {
   useEffect(() => {
     if (!window.Kakao) {
       // Prevent initializing multiple times
-      window.Kakao.init(API_KEY)
+      window.Kakao.init('7210b04e6ea97e6951d5924383aa1990')
     }
   }, [])
 
@@ -62,7 +62,7 @@ const SignUpPage: FC = (): ReactElement => {
             <p className='pl-[10px] font-bold'>네이버로 가입</p>
           </div>
           <div
-            className='flex flex-row items-center  justify-center lg:m-[15px] mb-[8px] lg:mb-[0px] w-[100%]  p-[10px] border-solid border-2 border-lgborder'
+            className='flex flex-row items-center  justify-center lg:m-[15px] mb-[8px] lg:mb-[0px] w-[100%]  p-[10px] border-solid border-2 border-lgborder hover:cursor-pointer'
             onClick={() => loginWithKakao()}
           >
             <img src={kakao} alt='kakao' />
