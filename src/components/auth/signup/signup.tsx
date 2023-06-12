@@ -19,8 +19,8 @@ const SignUpPage: FC = (): ReactElement => {
     navigate('/login')
   }
 
-  const apiKey = import.meta.env.VITE_API_KEY
-  const API_KEY = `${apiKey}`
+  // const apiKey = import.meta.env.VITE_API_KEY
+  // const API_KEY = `${apiKey}`
 
   useEffect(() => {
     if (!window.Kakao) {
