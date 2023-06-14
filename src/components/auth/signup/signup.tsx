@@ -5,10 +5,12 @@ import naver from '../../../assets/images/Logo_Naver_24.png'
 import facebook from '../../../assets/images/facebook.png'
 import google from '../../../assets/images/google.png'
 import kakao from '../../../assets/images/kakao.png'
+import { setToLocal } from '../../helpers/handleLocalStorage'
 
 declare global {
   interface Window {
     Kakao: any
+    kakaoScriptLoaded: boolean
   }
 }
 
@@ -19,25 +21,59 @@ const SignUpPage: FC = (): ReactElement => {
     navigate('/login')
   }
 
-  // const apiKey = import.meta.env.VITE_API_KEY
-  // const API_KEY = `${apiKey}`
+  const apiKey = import.meta.env.VITE_API_KEY
+  const API_KEY = `${apiKey}`
+
+  const initializeKakao = () => {
+    window.Kakao.init(API_KEY || '5292aa5fdc408f4b4f6582029f5febae')
+  }
 
   useEffect(() => {
-    if (!window.Kakao) {
-      // Prevent initializing multiple times
+    window.kakaoScriptLoaded = false
+    const script = document.createElement('script')
+    script.src = '//developers.kakao.com/sdk/js/kakao.min.js'
+    script.async = true
+    script.onload = () => {
+      window.kakaoScriptLoaded = true
     }
-    window.Kakao.init('7210b04e6ea97e6951d5924383aa1990')
+    document.body.appendChild(script)
+
+    const checkKakaoScript = () => {
+      if (window.kakaoScriptLoaded) {
+        initializeKakao()
+      } else {
+        setTimeout(checkKakaoScript, 100)
+      }
+    }
+
+    window.onload = () => {
+      checkKakaoScript()
+    }
+
+    return () => {
+      document.body.removeChild(script)
+      window.onload = null
+    }
+    //eslint-disable-next-line
   }, [])
 
   const loginWithKakao = (): void => {
     if (window.Kakao && window.Kakao.Auth) {
       window.Kakao.Auth.login({
-        success: (authObj: any) => {
-          alert(JSON.stringify(authObj))
-          console.log(JSON.stringify(authObj))
+        success: () => {
+          window.Kakao.API.request({
+            url: '/v2/user/me',
+          })
+            .then(function (res: unknown) {
+              setToLocal('user', res)
+              navigate('/sd/')
+            })
+            .catch(function (err: unknown) {
+              console.log({ err })
+            })
         },
-        fail: (err: any) => {
-          alert(JSON.stringify(err))
+        fail: (err: unknown) => {
+          console.log({ err })
         },
       })
     } else {

@@ -2,6 +2,7 @@ import { Layout } from 'antd'
 import { FC, ReactElement, useState } from 'react'
 import { useMatch, useNavigate } from 'react-router-dom'
 import { CheckBox } from '../../common/input'
+import { getFromLocal } from '../../helpers/handleLocalStorage'
 import { GlobalModel } from '../../modals'
 
 const BasicInformation: FC = (): ReactElement => {
@@ -13,6 +14,8 @@ const BasicInformation: FC = (): ReactElement => {
   function ToogleDrawer(): void {
     setWithDrawal(!Withdrawal)
   }
+
+  const data = getFromLocal<any>('user')
 
   const [isChecked, setIsChecked] = useState<boolean>(false)
   const [toogle, setToogle] = useState<boolean>(false)
@@ -140,7 +143,9 @@ const BasicInformation: FC = (): ReactElement => {
             <div className='flex justify-between items-center '>
               <div className='flex flex-col'>
                 <p className='font-semibold text-sm'>로그인 한 계정</p>
-                <p className='font-thin text-sm mt-[5px]'>helloar@naver.com</p>
+                <p className='font-thin text-sm mt-[5px]'>
+                  {data?.kakao_account?.email}
+                </p>
               </div>
               <div>
                 <button className='w-fit  text-black  font-medium  text-sm p-[10px] text-center border-solid border-2 border-navactive-800'>
