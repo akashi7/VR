@@ -1,8 +1,8 @@
 import { Layout } from 'antd'
 import { FC, ReactElement, useState } from 'react'
 import { useMatch, useNavigate } from 'react-router-dom'
+import { getFromLocal } from '../../../helpers/handleLocalStorage'
 import { CheckBox } from '../../common/input'
-import { getFromLocal } from '../../helpers/handleLocalStorage'
 import { GlobalModel } from '../../modals'
 
 const BasicInformation: FC = (): ReactElement => {

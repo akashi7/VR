@@ -5,12 +5,14 @@ import naver from '../../../assets/images/Logo_Naver_24.png'
 import facebook from '../../../assets/images/facebook.png'
 import google from '../../../assets/images/google.png'
 import kakao from '../../../assets/images/kakao.png'
-import { setToLocal } from '../../helpers/handleLocalStorage'
-
+// import { setToLocal } from '../../../helpers/handleLocalStorage'
+// import { kakaoAuthSlice } from '../../../state/slices/auth.slice'
+// import { useDispatch } from 'react-redux'
+// import { RootState } from '../../../state'
+// import { useSelector } from 'react-redux'
 declare global {
   interface Window {
     Kakao: any
-    kakaoScriptLoaded: boolean
   }
 }
 
@@ -24,35 +26,12 @@ const SignUpPage: FC = (): ReactElement => {
   const apiKey = import.meta.env.VITE_API_KEY
   const API_KEY = `${apiKey}`
 
-  const initializeKakao = () => {
-    window.Kakao.init(API_KEY || '5292aa5fdc408f4b4f6582029f5febae')
-  }
+  // const dispatch = useDispatch()
+  // const { loading } = useSelector((state: RootState) => state.authState)
 
   useEffect(() => {
-    window.kakaoScriptLoaded = false
-    const script = document.createElement('script')
-    script.src = '//developers.kakao.com/sdk/js/kakao.min.js'
-    script.async = true
-    script.onload = () => {
-      window.kakaoScriptLoaded = true
-    }
-    document.body.appendChild(script)
-
-    const checkKakaoScript = () => {
-      if (window.kakaoScriptLoaded) {
-        initializeKakao()
-      } else {
-        setTimeout(checkKakaoScript, 100)
-      }
-    }
-
-    window.onload = () => {
-      checkKakaoScript()
-    }
-
-    return () => {
-      document.body.removeChild(script)
-      window.onload = null
+    if (!window.Kakao || !window.Kakao.isInitialized()) {
+      window.Kakao.init(API_KEY || '5292aa5fdc408f4b4f6582029f5febae')
     }
     //eslint-disable-next-line
   }, [])
@@ -60,17 +39,19 @@ const SignUpPage: FC = (): ReactElement => {
   const loginWithKakao = (): void => {
     if (window.Kakao && window.Kakao.Auth) {
       window.Kakao.Auth.login({
-        success: () => {
-          window.Kakao.API.request({
-            url: '/v2/user/me',
-          })
-            .then(function (res: unknown) {
-              setToLocal('user', res)
-              navigate('/sd/')
-            })
-            .catch(function (err: unknown) {
-              console.log({ err })
-            })
+        success: (res: unknown) => {
+          console.log({ res })
+          // window.Kakao.API.request({
+          //   url: '/v2/user/me',
+          // })
+          //   .then(function (res: unknown) {
+          //     console.log({ res })
+          //     // setToLocal('user', res)
+          //     // navigate('/sd/')
+          //   })
+          //   .catch(function (err: unknown) {
+          //     console.log({ err })
+          //   })
         },
         fail: (err: unknown) => {
           console.log({ err })
