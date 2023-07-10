@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { kakaoAuth } from '../../utils/api/auth.api'
 
@@ -33,7 +34,7 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     next: (state) => {
-      console.log('')
+      console.log(state)
     },
   },
   extraReducers: (builder) => {
