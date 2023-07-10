@@ -31,7 +31,7 @@ const SignUpPage: FC = (): ReactElement => {
 
   useEffect(() => {
     if (!window.Kakao || !window.Kakao.isInitialized()) {
-      window.Kakao.init(API_KEY || '5292aa5fdc408f4b4f6582029f5febae')
+      window.Kakao.init(API_KEY)
     }
     //eslint-disable-next-line
   }, [])
