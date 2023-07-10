@@ -7,10 +7,10 @@ import facebook from '../../../assets/images/facebook.png'
 import google from '../../../assets/images/google.png'
 import kakao from '../../../assets/images/kakao.png'
 // import { setToLocal } from '../../../helpers/handleLocalStorage'
-// import { kakaoAuthSlice } from '../../../state/slices/auth.slice'
-// import { useDispatch } from 'react-redux'
+import { notification } from 'antd'
+import { useDispatch } from 'react-redux'
 // import { RootState } from '../../../state'
-// import { useSelector } from 'react-redux'
+import { kakaoAuthSlice } from '../../../state/slices/auth.slice'
 declare global {
   interface Window {
     Kakao: any
@@ -27,7 +27,7 @@ const SignUpPage: FC = (): ReactElement => {
   const apiKey = import.meta.env.VITE_API_KEY
   const API_KEY = `${apiKey}`
 
-  // const dispatch = useDispatch()
+  const dispatch = useDispatch()
   // const { loading } = useSelector((state: RootState) => state.authState)
 
   useEffect(() => {
@@ -37,11 +37,24 @@ const SignUpPage: FC = (): ReactElement => {
     //eslint-disable-next-line
   }, [])
 
+  function success() {
+    notification.success({
+      placement: 'top',
+      message: '로그인에 성공했습니다.',
+      duration: 5,
+      key: 'success',
+    })
+  }
+
   const loginWithKakao = (): void => {
     if (window.Kakao && window.Kakao.Auth) {
       window.Kakao.Auth.login({
-        success: (res: unknown) => {
-          console.log({ res })
+        success: (res: any) => {
+          const data: any = {
+            access_token: res?.access_token,
+            id_token: res?.id_token,
+          }
+          dispatch(kakaoAuthSlice({ data, success }) as any)
           // window.Kakao.API.request({
           //   url: '/v2/user/me',
           // })
