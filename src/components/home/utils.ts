@@ -1,0 +1,15 @@
+export const colorsWithBackground = [
+  { name: 'Red', background: '#FF0000' },
+  { name: 'Green', background: '#00FF00' },
+  { name: 'Blue', background: '#0000FF' },
+  { name: 'Yellow', background: '#FFFF00' },
+  { name: 'Orange', background: '#FFA500' },
+  { name: 'Purple', background: '#800080' },
+  { name: 'Pink', background: '#FFC0CB' },
+  { name: 'Brown', background: '#A52A2A' },
+  { name: 'Black', background: '#000000' },
+  { name: 'White', background: '#FFFFFF' },
+  { name: 'Gray', background: '#808080' },
+  { name: 'Cyan', background: '#00FFFF' },
+  { name: 'Magenta', background: '#FF00FF' },
+]

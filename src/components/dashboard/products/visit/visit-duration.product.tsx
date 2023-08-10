@@ -1,6 +1,6 @@
 import { Layout } from 'antd'
 import { FC, ReactElement, useState } from 'react'
-import { Input } from '../../../common/input'
+// import { Input } from '../../../common/input'
 import DailyAverage from '../../common/products/average'
 import DistributionTime from '../../common/products/distribution'
 
@@ -21,14 +21,14 @@ const VisitDuration: FC = (): ReactElement => {
             </h1>
           </div>
           <div>
-            <Input
+            {/* <Input
               value={inputValue}
               onChange={handleInputChange}
               type='select'
               style={{ width: '100%' }}
               options={['지난 1일', '인테리어 가구']}
               className='inline-block p-[10px] bg-white border border-gray-300  focus:outline-none focus:border-blue-500'
-            />
+            /> */}
           </div>
         </div>
         <div className='flex flex-row items-center  border-b border-[#EBEBEB] mt-[35px] '>

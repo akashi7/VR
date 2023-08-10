@@ -1,4 +1,4 @@
 import CheckBox from './checkbox'
-import Input from './input'
+import { InputSelect, InputText } from './input'
 
-export { CheckBox, Input }
+export { CheckBox, InputSelect, InputText }

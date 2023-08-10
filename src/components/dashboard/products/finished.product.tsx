@@ -2,7 +2,7 @@ import { Layout } from 'antd'
 import { FC, ReactElement, useState } from 'react'
 import vector from '../../../assets/images/Vectortwo.png'
 import gemStone from '../../../assets/images/gem-stone.png'
-import { Input } from '../../common/input'
+// import { Input } from '../../common/input'
 import { handleToggle } from '../../../state/slices/sidebar.slice'
 import { RootState } from '../../../state'
 import { useSelector, useDispatch } from 'react-redux'
@@ -52,13 +52,13 @@ const FinishedAppointment: FC = (): ReactElement => {
           </h1>
         </div>
         <div className='w-full flex flex-row items-center justify-center mt-[25px]  '>
-          <Input
+          {/* <Input
             value={inputValue}
             onChange={handleInputChange}
             type='text'
             style={{ width: '32%' }}
             className='inline-block px-2 py-2 bg-white border border-gray-300  focus:outline-none focus:border-blue-500'
-          />
+          /> */}
           <button className='font-medium ml-[10px] text-sm p-[10px]  rounded text-center w-fit bg-black text-white'>
             복사
           </button>

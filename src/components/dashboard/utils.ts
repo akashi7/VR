@@ -166,35 +166,21 @@ export const AverageListData = [
 export const UvCardsListData = [
   {
     id: 1,
-    title: '방문자수',
+    title: '구매자 수',
     number: '333',
     subNumber: '333',
     indication: '↑ 333 (33.3%)',
   },
   {
     id: 2,
-    title: '방문횟수',
+    title: '방문자 수',
     number: '333',
     subNumber: '333',
     indication: '↑ 333 (33.3%)',
   },
   {
     id: 3,
-    title: '방문횟수',
-    number: '333',
-    subNumber: '333',
-    indication: '↑ 333 (33.3%)',
-  },
-  {
-    id: 4,
-    title: '방문횟수',
-    number: '333',
-    subNumber: '333',
-    indication: '↑ 333 (33.3%)',
-  },
-  {
-    id: 5,
-    title: '방문횟수',
+    title: '구매전환율(%)',
     number: '333',
     subNumber: '333',
     indication: '↑ 333 (33.3%)',

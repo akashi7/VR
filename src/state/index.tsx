@@ -4,14 +4,26 @@ import sidebarReducer, { SidebarState } from './slices/sidebar.slice'
 
 import authSliceReducer, { AuthState } from './slices/auth.slice'
 
+import serviceSliceReducer, { ServiceState } from './slices/services.slice'
+
+import productSliceReducer, { ProductState } from './slices/product.slice'
+
+import hidePageReducer, { HidePageState } from './slices/hidepage.slice'
+
 export interface RootState {
   sidebar: SidebarState
-  authState: AuthState
+  auth: AuthState
+  service: ServiceState
+  product: ProductState
+  page: HidePageState
 }
 
 const rootReducer: Reducer<RootState> = combineReducers<RootState>({
   sidebar: sidebarReducer,
-  authState: authSliceReducer, // Corrected the auth reducer key
+  auth: authSliceReducer,
+  service: serviceSliceReducer,
+  product: productSliceReducer,
+  page: hidePageReducer,
 })
 
 const store = configureStore({

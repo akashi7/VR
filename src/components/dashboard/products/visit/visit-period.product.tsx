@@ -1,6 +1,6 @@
 import { Layout, Table } from 'antd'
 import { FC, ReactElement, useState } from 'react'
-import { CheckBox, Input } from '../../../common/input'
+import { CheckBox } from '../../../common/input'
 import PeriodTimeCards from '../../common/products/period.cards'
 import chart from '../../../../assets/images/ChartThree.png'
 import { AvearageColums } from '../../helper'
@@ -27,14 +27,14 @@ const VisitTimePeriod: FC = (): ReactElement => {
           </div>
           <div className='flex flex-row items-center '>
             <div>
-              <Input
+              {/* <Input
                 value={inputValue}
                 onChange={handleInputChange}
                 type='select'
                 style={{ width: '100%' }}
                 options={['지난 1일', '인테리어 가구']}
                 className='inline-block p-[10px] bg-white border border-gray-300  focus:outline-none focus:border-blue-500'
-              />
+              /> */}
             </div>
           </div>
         </div>

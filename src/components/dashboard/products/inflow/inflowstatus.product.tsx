@@ -1,7 +1,7 @@
 import { Layout, Table } from 'antd'
 import { FC, ReactElement, useState } from 'react'
 import chart from '../../../../assets/images/ChartFour.png'
-import { Input } from '../../../common/input'
+// import { Input } from '../../../common/input'
 import InflowStatusCards from '../../common/products/inflow.cards'
 import { AvearageColums } from '../../helper'
 import { AverageListData } from '../../utils'
@@ -22,14 +22,14 @@ const InflowStatus: FC = (): ReactElement => {
           </div>
           <div className='flex flex-row items-center '>
             <div>
-              <Input
+              {/* <Input
                 value={inputValue}
                 onChange={handleInputChange}
                 type='select'
                 style={{ width: '100%' }}
                 options={['지난 1일', '인테리어 가구']}
                 className='inline-block p-[10px] bg-white border border-gray-300  focus:outline-none focus:border-blue-500'
-              />
+              /> */}
             </div>
           </div>
         </div>
@@ -42,14 +42,14 @@ const InflowStatus: FC = (): ReactElement => {
           </div>
           <div className='flex flex-row items-center '>
             <div>
-              <Input
+              {/* <Input
                 value={inputValue}
                 onChange={handleInputChange}
                 type='select'
                 style={{ width: '100%' }}
                 options={['막대 그래프', '인테리어 가구']}
                 className='inline-block p-[10px] bg-white border border-gray-300  focus:outline-none focus:border-blue-500'
-              />
+              /> */}
             </div>
             <div className='pl-[20px] '>
               <button className='font-bold border  text-sm p-[10px] text-center w-fit text-black bg-[#F5F5F5]'>

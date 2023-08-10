@@ -1,8 +1,7 @@
-import { Layout, Menu } from 'antd'
+import { Layout } from 'antd'
 import { FC, ReactElement, SetStateAction, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link, useLocation, useMatch } from 'react-router-dom'
-import { productDasboardRoutes } from '../../../routes/menu.routes'
+import { Link, useLocation, useMatch, useNavigate } from 'react-router-dom'
 import { RootState } from '../../../state'
 import { handleToggle } from '../../../state/slices/sidebar.slice'
 
@@ -15,6 +14,7 @@ const ProductSiderBar: FC = (): ReactElement => {
 
   const dispatch = useDispatch()
   const { toggle } = useSelector((state: RootState) => state.sidebar)
+  const { toggle: ToogleState } = useSelector((state: RootState) => state.page)
 
   const [selectedKey, setSelectedKey] = useState<string | null>(null)
 
@@ -22,11 +22,7 @@ const ProductSiderBar: FC = (): ReactElement => {
     setSelectedKey(e.key)
   }
 
-  const menuItemStyle = {
-    borderRight: 'none',
-    background: 'none',
-    marginLeft: '-17px',
-  }
+  const navigate = useNavigate()
 
   function Toogle(): void {
     dispatch(handleToggle())
@@ -34,12 +30,12 @@ const ProductSiderBar: FC = (): ReactElement => {
 
   return (
     <Sider
-      width={toggle ? 0 : 300}
+      width={toggle || ToogleState ? 0 : 300}
       className={`border-t-2 border-r-2 border-navactive bg-white`}
       style={{
         backgroundColor: 'white',
         position: 'sticky',
-        visibility: toggle ? 'hidden' : 'visible',
+        visibility: toggle || ToogleState ? 'hidden' : 'visible',
       }}
     >
       <div className='p-[10px] mt-[15px]'>
@@ -68,11 +64,14 @@ const ProductSiderBar: FC = (): ReactElement => {
           라이브 중인 제품
         </Link>
         <div className='p-[10px]'>
-          <h2 className='font-semibold lg:text-lg text-black'>
+          <h2
+            className='font-semibold lg:text-lg text-black cursor-pointer'
+            onClick={() => navigate('/pr/analytics')}
+          >
             AR 서비스 애널리틱스
           </h2>
         </div>
-        <div>
+        {/* <div>
           <Menu
             mode='inline'
             style={menuItemStyle}
@@ -100,10 +99,10 @@ const ProductSiderBar: FC = (): ReactElement => {
               )
             })}
           </Menu>
-        </div>
-        <div className='p-[10px]'>
+        </div> */}
+        {/* <div className='p-[10px]'>
           <h1 className='font-semibold lg:text-lg text-black'>구매 전환</h1>
-        </div>
+        </div> */}
       </div>
     </Sider>
   )
