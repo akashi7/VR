@@ -10,7 +10,12 @@ import kakao from '../../../assets/images/kakao.png'
 import { notification } from 'antd'
 import { useDispatch } from 'react-redux'
 // import { RootState } from '../../../state'
-import { kakaoAuthSlice } from '../../../state/slices/auth.slice'
+import { useGoogleLogin } from '@react-oauth/google'
+import {
+  googleAuthSlice,
+  kakaoAuthSlice,
+} from '../../../state/slices/auth.slice'
+
 declare global {
   interface Window {
     Kakao: any
@@ -40,43 +45,48 @@ const SignUpPage: FC = (): ReactElement => {
   function success() {
     notification.success({
       placement: 'top',
-      message: '로그인에 성공했습니다.',
+      message: (
+        <span className=' text-white'>'성공적으로 수정되었습니다!'</span>
+      ),
       duration: 5,
       key: 'success',
+      style: {
+        backgroundColor: 'black',
+      },
+    })
+    setTimeout(() => {
+      navigate('/sd')
+    }, 5000)
+  }
+
+  function Error() {
+    notification.error({
+      placement: 'top',
+      message: <span className=' text-red'>'뭔가 잘못!!'</span>,
+      duration: 5,
+      key: 'error',
+      style: {},
     })
   }
 
   const loginWithKakao = (): void => {
-    if (window.Kakao && window.Kakao.Auth) {
-      window.Kakao.Auth.login({
-        success: (res: any) => {
-          const data: any = {
-            access_token: res?.access_token,
-            id_token: res?.id_token,
-          }
-          dispatch(kakaoAuthSlice({ data, success }) as any)
-          // window.Kakao.API.request({
-          //   url: '/v2/user/me',
-          // })
-          //   .then(function (res: unknown) {
-          //     console.log({ res })
-          //     // setToLocal('user', res)
-          //     // navigate('/sd/')
-          //   })
-          //   .catch(function (err: unknown) {
-          //     console.log({ err })
-          //   })
-        },
-        fail: (err: unknown) => {
-          console.log({ err })
-        },
-      })
-    } else {
-      console.error(
-        'Kakao SDK is not initialized or Auth module is unavailable.'
-      )
+    const data: any = {
+      access_token: 'WELRjMxthzZeO7iWtnpYNFNCGdulvvbMGoFtpTzTCisMpgAAAYnUULf_',
+      id_token:
+        'eyJraWQiOiI5ZjI1MmRhZGQ1ZjIzM2Y5M2QyZmE1MjhkMTJmZWEiLCJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI1MjkyYWE1ZmRjNDA4ZjRiNGY2NTgyMDI5ZjVmZWJhZSIsInN1YiI6IjI4NDA4NjI3MzAiLCJhdXRoX3RpbWUiOjE2OTE0ODQyMDcsImlzcyI6Imh0dHBzOi8va2F1dGgua2FrYW8uY29tIiwibmlja25hbWUiOiJoZWxsb1ZSIiwiZXhwIjoxNjkxNDkxNDA3LCJpYXQiOjE2OTE0ODQyMDcsInBpY3R1cmUiOiJodHRwOi8vay5rYWthb2Nkbi5uZXQvZG4vZHBrOWwxL2J0cW1HaEEybEtML096MHdEdUpuMVlWMkRJbjkyZjZEVksvaW1nXzExMHgxMTAuanBnIiwiZW1haWwiOiJoZWxsb3ZyQGtha2FvLmNvbSJ9.LOPDeNEAY2HvFjd6BFyqzCvcoKWvFmzZO3bAhQHlZ9NHPAG2snmxZvzLVEDYUQhthBpf5s6XXVdRGxM6qfBZNH6y7apvtvDsSHa-6K_FdSFRTiNORjtkorIXkv12o02r9qx2r5igo8v0CCiZG1FwuMYEBuKFHhoa-tleGFb8agXgCm123dNzb38ns4RwNlifq-rMRkUN_DeZm59wB0fwzBS1DumljtAZeSws4G96ocU8vjPhBEMHhdSUOUcLHRnkhvetF-vCunc1S0fJy7Z6xeRNelBK9cd6RbHJLIe3a8e-sQ_Tr2gikEs7H_IOdNNjM_2GxvNkTrSxX5ow8u9vpA',
+      code: '',
     }
+    dispatch(kakaoAuthSlice({ data, success, Error }) as any)
   }
+
+  const login = useGoogleLogin({
+    onSuccess: (tokenResponse) => {
+      const data: any = {
+        access_token: tokenResponse.access_token,
+      }
+      dispatch(googleAuthSlice({ data, success, Error }) as any)
+    },
+  })
 
   return (
     <Layout className='lg:mt-[50px] bg-white'>
@@ -99,7 +109,10 @@ const SignUpPage: FC = (): ReactElement => {
             <img src={kakao} alt='kakao' />
             <p className='pl-[10px] font-bold'>카카오로 가입</p>
           </div>
-          <div className='flex flex-row items-center  justify-center lg:m-[15px] mb-[8px] lg:mb-[0px] w-[100%]  p-[10px] border-solid border-2 border-lgborder'>
+          <div
+            className='flex flex-row items-center  justify-center lg:m-[15px] mb-[8px] lg:mb-[0px] w-[100%]  p-[10px] border-solid border-2 border-lgborder hover:cursor-pointer'
+            onClick={() => login()}
+          >
             <img
               src={google}
               alt='google'

@@ -1,66 +1,51 @@
-import { CSSProperties, ChangeEvent, FC, useEffect, useRef } from 'react'
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { useField } from 'formik'
 
 type InputProps = {
-  value: string
-  onChange: (value: string) => void
-  type: 'text' | 'select'
-  options?: string[]
-  className: string
-  style: CSSProperties
+  options?: any[]
+  name: string
 }
 
-const Input: FC<InputProps> = ({
-  value,
-  onChange,
-  type,
-  options,
-  className,
-  style,
-}) => {
-  const handleInputChange = (
-    event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>
-  ) => {
-    onChange(event.target.value)
-  }
-
-  const inputRef = useRef<HTMLInputElement>(null)
-
-  useEffect(() => {
-    if (inputRef.current) {
-      inputRef.current.style.width = 'auto'
-      inputRef.current.style.width = `${inputRef.current.scrollWidth}px`
-    }
-  }, [value])
-  if (type === 'text') {
-    return (
+export const InputText = ({ options, ...props }: InputProps) => {
+  const [field, meta] = useField(props)
+  return (
+    <>
       <input
         type='text'
-        value={value}
-        className={className}
-        onChange={handleInputChange}
-        style={style}
+        {...field}
+        {...props}
+        style={{ width: '100%' }}
+        className='inline-block px-2 py-2 bg-white border border-gray-300  focus:outline-none focus:border-blue-500'
       />
-    )
-  }
+      {meta.touched && meta.error ? (
+        <span className=' text-sm text-red-500 mt-[4px]'>{meta.error}</span>
+      ) : null}
+    </>
+  )
+}
 
-  if (type === 'select' && options) {
-    return (
+export const InputSelect = ({ options, ...props }: InputProps) => {
+  const [field, meta] = useField(props)
+  return (
+    <>
       <select
-        value={value}
-        onChange={handleInputChange}
-        style={style}
-        className={className}
+        {...field}
+        style={{ width: '100%' }}
+        className={
+          'inline-block p-[10px] bg-white border border-gray-300  focus:outline-none focus:border-blue-500'
+        }
+        {...props}
       >
-        {options.map((option) => (
-          <option key={option} value={option}>
-            {option}
+        <option className='text-tcolor'>Select option</option>
+        {options?.map((option, index) => (
+          <option key={index} value={option?.id}>
+            {option?.name}
           </option>
         ))}
       </select>
-    )
-  }
-
-  return null
+      {meta.touched && meta.error ? (
+        <span className=' text-sm text-red-500 mt-[4px]'>{meta.error}</span>
+      ) : null}
+    </>
+  )
 }
-
-export default Input

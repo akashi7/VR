@@ -2,10 +2,12 @@ import { Layout } from 'antd'
 import { FC, ReactElement } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import LoginPage from '../components/auth/login/login'
+import SignUpPage from '../components/auth/signup/signup'
 import ContentWrapper from '../components/common/contentwrapper/homewrapper'
 import HomeNavBar from '../components/common/header/homeheader'
-import HomePage from '../components/home'
-import SignUpPage from '../components/auth/signup/signup'
+import QaPage from '../components/home/Qa.page'
+import HomePage from '../components/home/home'
+import PublicProduct from '../components/home/product.public'
 
 const HomeRoutes: FC = (): ReactElement => {
   return (
@@ -19,6 +21,8 @@ const HomeRoutes: FC = (): ReactElement => {
             <Route path='/' element={<HomePage />} />
             <Route path='/login' element={<LoginPage />} />
             <Route path='/signup' element={<SignUpPage />} />
+            <Route path='/product/:id' element={<PublicProduct />} />
+            <Route path='/qa' element={<QaPage />} />
           </Routes>
         </ContentWrapper>
       </div>

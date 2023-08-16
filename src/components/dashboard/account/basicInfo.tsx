@@ -1,7 +1,10 @@
-import { Layout } from 'antd'
-import { FC, ReactElement, useState } from 'react'
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { Layout, notification } from 'antd'
+import { FC, ReactElement, useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { useMatch, useNavigate } from 'react-router-dom'
-import { getFromLocal } from '../../../helpers/handleLocalStorage'
+import { RootState } from '../../../state'
+import { userSlice } from '../../../state/slices/auth.slice'
 import { CheckBox } from '../../common/input'
 import { GlobalModel } from '../../modals'
 
@@ -15,7 +18,9 @@ const BasicInformation: FC = (): ReactElement => {
     setWithDrawal(!Withdrawal)
   }
 
-  const data = getFromLocal<any>('user')
+  const dispatch = useDispatch()
+
+  const { userData } = useSelector((state: RootState) => state.auth)
 
   const [isChecked, setIsChecked] = useState<boolean>(false)
   const [toogle, setToogle] = useState<boolean>(false)
@@ -26,6 +31,26 @@ const BasicInformation: FC = (): ReactElement => {
 
   const Toogle = () => {
     setToogle(!toogle)
+  }
+
+  function Error() {
+    notification.error({
+      placement: 'top',
+      message: <span className=' text-red'>'뭔가 잘못!!'</span>,
+      duration: 3,
+      key: 'error',
+      style: {},
+    })
+  }
+
+  useEffect(() => {
+    dispatch(userSlice({ Error }) as any)
+    //eslint-disable-next-line
+  }, [])
+
+  const Logout = () => {
+    localStorage.clear()
+    navigate('/')
   }
 
   function DeleteContent() {
@@ -143,12 +168,13 @@ const BasicInformation: FC = (): ReactElement => {
             <div className='flex justify-between items-center '>
               <div className='flex flex-col'>
                 <p className='font-semibold text-sm'>로그인 한 계정</p>
-                <p className='font-thin text-sm mt-[5px]'>
-                  {data?.kakao_account?.email}
-                </p>
+                <p className='font-thin text-sm mt-[5px]'>{userData?.email}</p>
               </div>
               <div>
-                <button className='w-fit  text-black  font-medium  text-sm p-[10px] text-center border-solid border-2 border-navactive-800'>
+                <button
+                  className='w-fit  text-black  font-medium  text-sm p-[10px] text-center border-solid border-2 border-navactive-800'
+                  onClick={() => Logout()}
+                >
                   로그아웃
                 </button>
               </div>

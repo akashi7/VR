@@ -12,6 +12,7 @@ import UvProduct from '../components/dashboard/products/visit/uv.product'
 import VisitDuration from '../components/dashboard/products/visit/visit-duration.product'
 import VisitTimePeriod from '../components/dashboard/products/visit/visit-period.product'
 import InflowStatus from '../components/dashboard/products/inflow/inflowstatus.product'
+import Private from './private'
 
 const { Content } = Layout
 
@@ -37,9 +38,10 @@ const ProductDashboard: FC = (): ReactElement => {
               <Route path='/new' element={<NewProduct />} />
               <Route path='/finished' element={<FinishedAppointment />} />
               <Route path='/visit-duration' element={<VisitDuration />} />
-              <Route path='/uv' element={<UvProduct />} />
+              <Route path='/analytics' element={<UvProduct />} />
               <Route path='/visit-period' element={<VisitTimePeriod />} />
               <Route path='/inflow-status' element={<InflowStatus />} />
+              <Route path='/edit/:id' element={<NewProduct />} />
             </Routes>
           </ContentWrapper>
         </Content>
@@ -48,4 +50,6 @@ const ProductDashboard: FC = (): ReactElement => {
   )
 }
 
-export default ProductDashboard
+const PrivateProductDashboardRoute = Private(ProductDashboard)
+
+export default PrivateProductDashboardRoute

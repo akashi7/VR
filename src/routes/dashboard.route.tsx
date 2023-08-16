@@ -6,6 +6,7 @@ import DashNavBar from '../components/common/header/dashboardheader'
 import SignUpSiderBar from '../components/common/sidebar/signup.sidebar'
 import BasicInformation from '../components/dashboard/account/basicInfo'
 import PlanManagment from '../components/dashboard/account/planmanagement'
+import Private from './private'
 
 const SignUpDashboardRoute: FC = (): ReactElement => {
   return (
@@ -30,4 +31,6 @@ const SignUpDashboardRoute: FC = (): ReactElement => {
   )
 }
 
-export default SignUpDashboardRoute
+const PrivateSignUpDashboardRoute = Private(SignUpDashboardRoute)
+
+export default PrivateSignUpDashboardRoute

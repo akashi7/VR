@@ -1,5 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import axios, { AxiosInstance } from 'axios'
-const baseURL = import.meta.env.BASE_URL
+import { getFromLocal } from '../helpers/handleLocalStorage'
+const baseURL = import.meta.env.VITE_BASE_URL
 
 let mainAPI: string
 
@@ -13,7 +15,15 @@ const instance: AxiosInstance = axios.create({
 
 instance.interceptors.request.use(
   (config) => {
-    config.headers['Authorization'] = 'Bearer ' + localStorage.getItem('token')
+    if (
+      config.url &&
+      (config.url.includes('auth/kakao/') ||
+        config.url.includes('auth/google/'))
+    ) {
+      return config
+    }
+
+    config.headers['Authorization'] = 'Token ' + getFromLocal<any>('token')
     return config
   },
   (error) => {
@@ -24,4 +34,5 @@ instance.interceptors.request.use(
 export const POST = instance.post
 export const GET = instance.get
 export const PUT = instance.put
+export const PATCH = instance.patch
 export const DELETE = instance.delete
