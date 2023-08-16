@@ -5,12 +5,8 @@ import DailyAverage from '../../common/products/average'
 import DistributionTime from '../../common/products/distribution'
 
 const VisitDuration: FC = (): ReactElement => {
-  const [inputValue, setInputValue] = useState('')
   const [isDistribution, setIsDistribution] = useState(true)
 
-  const handleInputChange = (value: string) => {
-    setInputValue(value)
-  }
   return (
     <Layout className='xl:p-[10px] p-[18px] md:p-[20px]  bg-white h-full'>
       <div className='mx-auto md:w-[100%] xl:w-[85%] '>

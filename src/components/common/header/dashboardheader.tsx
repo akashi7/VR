@@ -2,9 +2,6 @@ import { CloseOutlined, MenuOutlined } from '@ant-design/icons'
 import { Drawer } from 'antd'
 import { FC, ReactElement, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { RootState } from '../../../state'
-import { handleToggle } from '../../../state/slices/sidebar.slice'
-import { useDispatch } from 'react-redux'
 
 const DashNavBar: FC = (): ReactElement => {
   const navigate = useNavigate()
@@ -13,8 +10,6 @@ const DashNavBar: FC = (): ReactElement => {
   function ToogleDrawer(): void {
     setDrawer(!openDrawer)
   }
-
-  const dispatch = useDispatch()
 
   const CloseIcon = (
     <CloseOutlined

@@ -397,7 +397,7 @@ const NewProduct: FC = (): ReactElement => {
             <model-viewer
               src={
                 id
-                  ? `http://192.168.88.122:5000${
+                  ? `http://43.202.45.22:8000${
                       oneProduct?.products?.length &&
                       oneProduct?.products[0]?.model_file
                     }`
@@ -581,19 +581,25 @@ const NewProduct: FC = (): ReactElement => {
                     <div
                       className={` absolute ${
                         clicked > 2 || id
-                          ? 'bottom-[-5] pb-10 w-full'
+                          ? 'bottom-[-5] pb-[50px] w-full'
                           : 'bottom-0 right-0 w-[50%] px-[20px] '
                       }     `}
                     >
                       <div className=' w-full flex   flex-row items-center'>
-                        <p
-                          className='text-tred w-fit hover:cursor-pointer'
-                          onClick={ToogleDelete}
-                        >
-                          이 제품 삭제
-                        </p>
+                        {id && (
+                          <p
+                            className='text-tred w-fit hover:cursor-pointer'
+                            onClick={ToogleDelete}
+                          >
+                            이 제품 삭제
+                          </p>
+                        )}
                         <button
-                          className='font-medium  ml-[50px] text-sm p-[10px] text-center w-[20%] text-black bg-onOK'
+                          className={`font-medium  ${
+                            id ? 'ml-[50px]' : 'ml-0'
+                          } text-sm p-[10px] text-center ${
+                            id ? 'w-[20%]' : 'w-[30%]'
+                          } text-black bg-onOK`}
                           onClick={() => {
                             ToogleCancel()
                           }}
@@ -621,7 +627,7 @@ const NewProduct: FC = (): ReactElement => {
                               loading
                                 ? 'bg-tcolor text-black'
                                 : 'bg-black text-white'
-                            }  rounded text-center w-[90%]`}
+                            }  rounded text-center w-[40%]`}
                             // onClick={() => navigate('/pr/finished')}
                             type='submit'
                           >

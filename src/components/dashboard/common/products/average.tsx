@@ -1,20 +1,17 @@
 import { FC, ReactElement, useState } from 'react'
 import chart from '../../../../assets/images/Chart.png'
 // import { Input } from '../../../common/input'
-import { CheckBox } from '../../../common/input'
 import { Table } from 'antd'
+import { CheckBox } from '../../../common/input'
 import { AvearageColums } from '../../helper'
 import { AverageListData } from '../../utils'
 
 const DailyAverage: FC = (): ReactElement => {
-  const [inputValue, setInputValue] = useState<string>('')
   const [isChecked, setIsChecked] = useState<boolean>(false)
   const handleCheckboxChange = (isChecked: boolean) => {
     setIsChecked(isChecked)
   }
-  const handleInputChange = (value: string) => {
-    setInputValue(value)
-  }
+
   return (
     <div className='mt-[20px] h-[100%] '>
       <div className='flex justify-between items-center'>

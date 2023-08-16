@@ -1,17 +1,12 @@
 import { Layout, Table } from 'antd'
 import { FC, ReactElement, useState } from 'react'
+import chart from '../../../../assets/images/ChartThree.png'
 import { CheckBox } from '../../../common/input'
 import PeriodTimeCards from '../../common/products/period.cards'
-import chart from '../../../../assets/images/ChartThree.png'
 import { AvearageColums } from '../../helper'
 import { AverageListData } from '../../utils'
 
 const VisitTimePeriod: FC = (): ReactElement => {
-  const [inputValue, setInputValue] = useState<string>('')
-
-  const handleInputChange = (value: string) => {
-    setInputValue(value)
-  }
   const [isChecked, setIsChecked] = useState<boolean>(false)
   const handleCheckboxChange = (isChecked: boolean) => {
     setIsChecked(isChecked)
