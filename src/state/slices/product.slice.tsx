@@ -143,7 +143,7 @@ export const addProductApi = createAsyncThunk(
     { rejectWithValue }
   ) => {
     return registerProduct(data)
-      .then((resp) => {
+      .then(() => {
         success()
       })
       .catch((error) => {
@@ -235,7 +235,7 @@ export const recordProductApi = createAsyncThunk(
   'record-product',
   async ({ id, Error }: recordProductInt, { rejectWithValue }) => {
     return recordProduct(id)
-      .then((resp) => {
+      .then(() => {
         return
       })
       .catch((error) => {
@@ -249,7 +249,7 @@ export const purchaseProductApi = createAsyncThunk(
   'purchase-product',
   async ({ id, Error }: recordProductInt, { rejectWithValue }) => {
     return purchaseProduct(id)
-      .then((resp) => {
+      .then(() => {
         return
       })
       .catch((error) => {

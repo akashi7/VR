@@ -84,7 +84,7 @@ const LiveProducts: FC = (): ReactElement => {
                 <div className='w-[20%]'>
                   <model-viewer
                     key={product?.id}
-                    src={`http://192.168.88.122:5000${
+                    src={`http://43.202.45.22:8000${
                       product?.products?.length &&
                       product?.products[0]?.model_file
                     }`}

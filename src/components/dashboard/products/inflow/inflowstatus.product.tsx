@@ -1,5 +1,5 @@
 import { Layout, Table } from 'antd'
-import { FC, ReactElement, useState } from 'react'
+import { FC, ReactElement } from 'react'
 import chart from '../../../../assets/images/ChartFour.png'
 // import { Input } from '../../../common/input'
 import InflowStatusCards from '../../common/products/inflow.cards'
@@ -7,12 +7,6 @@ import { AvearageColums } from '../../helper'
 import { AverageListData } from '../../utils'
 
 const InflowStatus: FC = (): ReactElement => {
-  const [inputValue, setInputValue] = useState<string>('')
-
-  const handleInputChange = (value: string) => {
-    setInputValue(value)
-  }
-
   return (
     <Layout className=' h-[100%] p-[18px] bg-white '>
       <div className='mx-auto md:w-[100%] xl:w-[80%] '>

@@ -1,7 +1,7 @@
 import { Layout } from 'antd'
-import { FC, ReactElement, SetStateAction, useState } from 'react'
+import { FC, ReactElement } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link, useLocation, useMatch, useNavigate } from 'react-router-dom'
+import { Link, useMatch, useNavigate } from 'react-router-dom'
 import { RootState } from '../../../state'
 import { handleToggle } from '../../../state/slices/sidebar.slice'
 
@@ -10,17 +10,10 @@ const { Sider } = Layout
 const ProductSiderBar: FC = (): ReactElement => {
   const newProducts = useMatch('/pr/k')
   const liveProducts = useMatch('/pr/')
-  const location = useLocation()
 
   const dispatch = useDispatch()
   const { toggle } = useSelector((state: RootState) => state.sidebar)
   const { toggle: ToogleState } = useSelector((state: RootState) => state.page)
-
-  const [selectedKey, setSelectedKey] = useState<string | null>(null)
-
-  const handleMenuClick = (e: { key: SetStateAction<string | null> }) => {
-    setSelectedKey(e.key)
-  }
 
   const navigate = useNavigate()
 

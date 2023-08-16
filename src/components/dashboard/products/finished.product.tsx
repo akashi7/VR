@@ -1,22 +1,14 @@
 import { Layout } from 'antd'
-import { FC, ReactElement, useState } from 'react'
+import { FC, ReactElement } from 'react'
 import vector from '../../../assets/images/Vectortwo.png'
 import gemStone from '../../../assets/images/gem-stone.png'
 // import { Input } from '../../common/input'
-import { handleToggle } from '../../../state/slices/sidebar.slice'
+import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../../../state'
-import { useSelector, useDispatch } from 'react-redux'
+import { handleToggle } from '../../../state/slices/sidebar.slice'
 import Vector from '../.././../assets/images/newVector.png'
 
 const FinishedAppointment: FC = (): ReactElement => {
-  const [inputValue, setInputValue] = useState(
-    '"code": "RnYX2w532omp6gDQgVNeyqAp"'
-  )
-
-  const handleInputChange = (value: string) => {
-    setInputValue(value)
-  }
-
   const dispatch = useDispatch()
   const { toggle } = useSelector((state: RootState) => state.sidebar)
 
