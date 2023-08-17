@@ -8,6 +8,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { RootState } from '../../../state'
 import { productListApi } from '../../../state/slices/product.slice'
+import { handleToggle } from '../../../state/slices/sidebar.slice'
+const baseURL = import.meta.env.VITE_SERVER_URL
 
 declare global {
   namespace JSX {
@@ -44,8 +46,12 @@ const LiveProducts: FC = (): ReactElement => {
   }, [])
 
   const { listData } = useSelector((state: RootState) => state.product)
+  const { toggle } = useSelector((state: RootState) => state.sidebar)
 
-  console.log({ listData })
+  const navigates = () => {
+    dispatch(handleToggle())
+    navigate('/pr/new')
+  }
 
   return (
     <Layout className='xl:p-[0px] p-[18px] bg-white'>
@@ -69,7 +75,10 @@ const LiveProducts: FC = (): ReactElement => {
             <div className='absolute  top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 '>
               <div>
                 <h1>아직 등록된 제품이 없습니다.</h1>
-                <button className='w-full mt-[10px] rounded-md font-medium text-sm p-[10px] text-center text-white bg-black'>
+                <button
+                  className='w-full mt-[10px] rounded-md font-medium text-sm p-[10px] text-center text-white bg-black'
+                  onClick={() => navigates()}
+                >
                   새 제품 등록하러 가기
                 </button>
               </div>
@@ -84,7 +93,7 @@ const LiveProducts: FC = (): ReactElement => {
                 <div className='w-[20%]'>
                   <model-viewer
                     key={product?.id}
-                    src={`http://43.202.45.22:8000${
+                    src={`${baseURL}${
                       product?.products?.length &&
                       product?.products[0]?.model_file
                     }`}

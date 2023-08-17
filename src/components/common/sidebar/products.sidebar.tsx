@@ -8,8 +8,9 @@ import { handleToggle } from '../../../state/slices/sidebar.slice'
 const { Sider } = Layout
 
 const ProductSiderBar: FC = (): ReactElement => {
-  const newProducts = useMatch('/pr/k')
+  const newProducts = useMatch('/pr/new')
   const liveProducts = useMatch('/pr/')
+  const qaPage = useMatch('/pr/qa')
 
   const dispatch = useDispatch()
   const { toggle } = useSelector((state: RootState) => state.sidebar)
@@ -23,12 +24,12 @@ const ProductSiderBar: FC = (): ReactElement => {
 
   return (
     <Sider
-      width={toggle || ToogleState ? 0 : 300}
+      width={toggle || ToogleState || qaPage ? 0 : 300}
       className={`border-t-2 border-r-2 border-navactive bg-white`}
       style={{
         backgroundColor: 'white',
         position: 'sticky',
-        visibility: toggle || ToogleState ? 'hidden' : 'visible',
+        visibility: toggle || ToogleState || qaPage ? 'hidden' : 'visible',
       }}
     >
       <div className='p-[10px] mt-[15px]'>

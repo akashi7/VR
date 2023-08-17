@@ -21,6 +21,7 @@ import {
 import { CheckBox } from '../../../common/input'
 import Paginator from '../../../common/paginator'
 import UvCards from '../../common/products/uv.cards'
+const baseURL = import.meta.env.VITE_SERVER_URL
 
 declare global {
   namespace JSX {
@@ -216,7 +217,7 @@ const UvProduct: FC = (): ReactElement => {
                     <div className='w-[20%]'>
                       <model-viewer
                         key={product?.id}
-                        src={`http://192.168.88.122:5000${
+                        src={`${baseURL}${
                           product &&
                           product.products &&
                           product?.products[0]?.model_file
