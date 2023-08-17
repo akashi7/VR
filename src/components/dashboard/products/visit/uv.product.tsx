@@ -12,15 +12,15 @@ import {
   useState,
 } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import chart from '../../../../assets/images/ChartTwo.png'
+// import chart from '../../../../assets/images/ChartTwo.png'
 import { RootState } from '../../../../state'
 import {
   productAnalyticsApi,
   productListApi,
 } from '../../../../state/slices/product.slice'
-import { CheckBox } from '../../../common/input'
 import Paginator from '../../../common/paginator'
 import UvCards from '../../common/products/uv.cards'
+import { Line } from '@ant-design/charts'
 const baseURL = import.meta.env.VITE_SERVER_URL
 
 declare global {
@@ -39,11 +39,41 @@ declare global {
 }
 
 const UvProduct: FC = (): ReactElement => {
+  const data = [
+    { year: '1991', value: 3 },
+    { year: '1992', value: 4 },
+    { year: '1993', value: 3.5 },
+    { year: '1994', value: 5 },
+    { year: '1995', value: 4.9 },
+    { year: '1996', value: 6 },
+    { year: '1997', value: 7 },
+    { year: '1998', value: 9 },
+    { year: '1999', value: 13 },
+  ]
+
+  const config = {
+    data,
+    width: 1200,
+    height: 400,
+    xField: 'year',
+    yField: 'value',
+    point: {
+      size: 5,
+      shape: 'diamond',
+    },
+    label: {
+      style: {
+        fill: '#aaa',
+      },
+    },
+  }
+
   const dispatch = useDispatch()
 
-  const [isChecked, setIsChecked] = useState<boolean>(false)
-  const handleCheckboxChange = (isChecked: boolean) => {
-    setIsChecked(isChecked)
+  const [selectedCheckbox, setSelectedCheckbox] = useState<string | null>(null)
+
+  const handleCheckboxChange = (value: string) => {
+    setSelectedCheckbox(value === selectedCheckbox ? null : value)
   }
 
   const [selectedProductId, setSelectedProductId] = useState<number | null>(
@@ -111,7 +141,7 @@ const UvProduct: FC = (): ReactElement => {
   ]
 
   return (
-    <Layout className=' h-[100%] p-[18px] bg-white '>
+    <Layout className=' h-[100%] p-[5px] bg-white '>
       <div
         className='mx-auto md:w-[100%] xl:w-[80%] '
         ref={productContainerRef}
@@ -147,36 +177,39 @@ const UvProduct: FC = (): ReactElement => {
             <h1 className='font-bold  text-black text-xl'>애널리틱스 그래프</h1>
           </div>
         </div>
-        <div className='mt-[50px]'>
-          <img src={chart} alt='graph' className='w-full' />
+        <div className='mt-[50px] '>
+          <Line {...config} />
         </div>
-        <div className='flex flex-row items-center mt-[35px]'>
+        <div className='flex flex-row items-center mt-[55px]'>
           <div className='flex flex-row items-center '>
-            <CheckBox
-              onChange={handleCheckboxChange}
-              checked={isChecked}
+            <input
+              type='checkbox'
+              onChange={() => handleCheckboxChange('visitor')}
+              checked={selectedCheckbox === 'visitor'}
               className={`lg:h-5 lg:w-5 h-4 w-4 accent-black`}
             />
             <p className='font-bold pl-[10px]'>방문자 수</p>
           </div>
           <div className='flex flex-row items-center pl-[20px]'>
-            <CheckBox
-              onChange={handleCheckboxChange}
-              checked={isChecked}
+            <input
+              type='checkbox'
+              onChange={() => handleCheckboxChange('newVisitor')}
+              checked={selectedCheckbox === 'newVisitor'}
               className={`lg:h-5 lg:w-5 h-4 w-4 accent-black`}
             />
             <p className='font-bold pl-[10px]'>신규 방문자 수</p>
           </div>
           <div className='flex flex-row items-center pl-[20px]'>
-            <CheckBox
-              onChange={handleCheckboxChange}
-              checked={isChecked}
+            <input
+              type='checkbox'
+              onChange={() => handleCheckboxChange('conversionRate')}
+              checked={selectedCheckbox === 'conversionRate'}
               className={`lg:h-5 lg:w-5 h-4 w-4 accent-black`}
             />
             <p className='font-bold pl-[10px]'>구매전환율(%)</p>
           </div>
         </div>
-        <div className='flex justify-between items-center mt-[25px] mb-5'>
+        <div className='flex justify-between items-center mt-[35px] mb-5'>
           <div>
             <h1 className='font-bold  text-black text-xl'>제품 리스트</h1>
           </div>
