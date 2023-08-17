@@ -81,12 +81,6 @@ const LoginPage: FC = (): ReactElement => {
         },
       })
     }
-    // const data: any = {
-    //   access_token: 'WELRjMxthzZeO7iWtnpYNFNCGdulvvbMGoFtpTzTCisMpgAAAYnUULf_',
-    //   id_token:
-    //     'eyJraWQiOiI5ZjI1MmRhZGQ1ZjIzM2Y5M2QyZmE1MjhkMTJmZWEiLCJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI1MjkyYWE1ZmRjNDA4ZjRiNGY2NTgyMDI5ZjVmZWJhZSIsInN1YiI6IjI4NDA4NjI3MzAiLCJhdXRoX3RpbWUiOjE2OTE0ODQyMDcsImlzcyI6Imh0dHBzOi8va2F1dGgua2FrYW8uY29tIiwibmlja25hbWUiOiJoZWxsb1ZSIiwiZXhwIjoxNjkxNDkxNDA3LCJpYXQiOjE2OTE0ODQyMDcsInBpY3R1cmUiOiJodHRwOi8vay5rYWthb2Nkbi5uZXQvZG4vZHBrOWwxL2J0cW1HaEEybEtML096MHdEdUpuMVlWMkRJbjkyZjZEVksvaW1nXzExMHgxMTAuanBnIiwiZW1haWwiOiJoZWxsb3ZyQGtha2FvLmNvbSJ9.LOPDeNEAY2HvFjd6BFyqzCvcoKWvFmzZO3bAhQHlZ9NHPAG2snmxZvzLVEDYUQhthBpf5s6XXVdRGxM6qfBZNH6y7apvtvDsSHa-6K_FdSFRTiNORjtkorIXkv12o02r9qx2r5igo8v0CCiZG1FwuMYEBuKFHhoa-tleGFb8agXgCm123dNzb38ns4RwNlifq-rMRkUN_DeZm59wB0fwzBS1DumljtAZeSws4G96ocU8vjPhBEMHhdSUOUcLHRnkhvetF-vCunc1S0fJy7Z6xeRNelBK9cd6RbHJLIe3a8e-sQ_Tr2gikEs7H_IOdNNjM_2GxvNkTrSxX5ow8u9vpA',
-    //   code: '',
-    // }
   }
 
   const login = useGoogleLogin({
