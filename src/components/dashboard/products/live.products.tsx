@@ -46,7 +46,6 @@ const LiveProducts: FC = (): ReactElement => {
   }, [])
 
   const { listData } = useSelector((state: RootState) => state.product)
-  const { toggle } = useSelector((state: RootState) => state.sidebar)
 
   const navigates = () => {
     dispatch(handleToggle())
