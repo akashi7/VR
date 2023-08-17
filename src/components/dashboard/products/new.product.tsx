@@ -27,6 +27,7 @@ import Vector from '../.././../assets/images/newVector.png'
 import { InputSelect, InputText } from '../../common/input'
 import { GlobalModel } from '../../modals'
 import EditProduct from '../common/products/edit.product'
+const baseURL = import.meta.env.VITE_SERVER_URL
 
 declare global {
   namespace JSX {
@@ -139,7 +140,7 @@ const NewProduct: FC = (): ReactElement => {
   }
 
   function success() {
-    dispatch(handleToggle())
+    toggle && dispatch(handleToggle())
     navigate('/pr')
   }
 
@@ -397,7 +398,7 @@ const NewProduct: FC = (): ReactElement => {
             <model-viewer
               src={
                 id
-                  ? `http://43.202.45.22:8000${
+                  ? `${baseURL}${
                       oneProduct?.products?.length &&
                       oneProduct?.products[0]?.model_file
                     }`

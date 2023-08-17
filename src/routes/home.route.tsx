@@ -5,9 +5,9 @@ import LoginPage from '../components/auth/login/login'
 import SignUpPage from '../components/auth/signup/signup'
 import ContentWrapper from '../components/common/contentwrapper/homewrapper'
 import HomeNavBar from '../components/common/header/homeheader'
-import QaPage from '../components/home/Qa.page'
 import HomePage from '../components/home/home'
 import PublicProduct from '../components/home/product.public'
+import QaPage from '../components/home/Qa.page'
 
 const HomeRoutes: FC = (): ReactElement => {
   return (

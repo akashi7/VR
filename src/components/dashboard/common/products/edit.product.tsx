@@ -1,13 +1,42 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import moment from 'moment'
-import { FC, ReactElement } from 'react'
+import { FC, ReactElement, useEffect, useState } from 'react'
 import { allProducts } from '../../../../state/slices/product.slice'
+import { notification } from 'antd'
+const baseURL = import.meta.env.VITE_URL
 
 interface editProductProps {
   product: allProducts
 }
 
 const EditProduct: FC<editProductProps> = ({ product }): ReactElement => {
+  const [copyText, setCopyText] = useState<string>('')
+
+  const copyUrl = () => {
+    navigator.clipboard.writeText(copyText).then(() => {
+      Success()
+    })
+  }
+
+  useEffect(() => {
+    if (product) {
+      const url = `${baseURL}/product/${product?.id}`
+      setCopyText(url)
+    }
+  }, [product])
+
+  function Success() {
+    notification.success({
+      placement: 'top',
+      message: <span className=' text-hgreen'>링크 복사됨</span>,
+      duration: 3,
+      key: 'success',
+      style: {
+        backgroundColor: 'black',
+      },
+    })
+  }
+
   return (
     <div className='h-[100%]'>
       <div className='mb-[20px]'>
@@ -75,10 +104,14 @@ const EditProduct: FC<editProductProps> = ({ product }): ReactElement => {
         <input
           type='text'
           className='inline-block px-2 py-2 bg-white border border-gray-300  focus:outline-none focus:border-blue-500'
-          value={'"code": "RnYX2w532omp6gDQgVNeyqAp"'}
+          value={copyText}
           style={{ width: '70%' }}
+          readOnly
         />
-        <button className='font-medium ml-[10px] text-sm p-[10px]  rounded text-center w-fit bg-[#F5F5F5] text-black'>
+        <button
+          className='font-medium ml-[10px] text-sm p-[10px]  rounded text-center w-fit bg-[#F5F5F5] text-black'
+          onClick={copyUrl}
+        >
           복사
         </button>
       </div>

@@ -2,6 +2,7 @@
 import { CaretRightOutlined } from '@ant-design/icons'
 import { Collapse } from 'antd'
 import { FC, ReactElement } from 'react'
+import { useMatch } from 'react-router-dom'
 
 const QaPage: FC = (): ReactElement => {
   const { Panel } = Collapse
@@ -11,8 +12,12 @@ const QaPage: FC = (): ReactElement => {
     return <CaretRightOutlined rotate={isActive ? 90 : 270} />
   }
 
+  const isDashQa = useMatch('/qa')
+
   return (
-    <div className='h-[100%] bg-white w-[100%] p-5 mt-[50px] '>
+    <div
+      className={`h-[100%] bg-white w-[100%] p-5  ${isDashQa && 'mt-[50px]'} `}
+    >
       <div className='mx-auto lg:w-[60%] w-full md:w-[80%]'>
         <div className='mt-5'>
           <h2 className='text-lg font-bold  '>공지 사항</h2>

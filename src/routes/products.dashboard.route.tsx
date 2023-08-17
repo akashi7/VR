@@ -13,6 +13,7 @@ import VisitDuration from '../components/dashboard/products/visit/visit-duration
 import VisitTimePeriod from '../components/dashboard/products/visit/visit-period.product'
 import InflowStatus from '../components/dashboard/products/inflow/inflowstatus.product'
 import Private from './private'
+import QaPage from '../components/home/Qa.page'
 
 const { Content } = Layout
 
@@ -42,6 +43,7 @@ const ProductDashboard: FC = (): ReactElement => {
               <Route path='/visit-period' element={<VisitTimePeriod />} />
               <Route path='/inflow-status' element={<InflowStatus />} />
               <Route path='/edit/:id' element={<NewProduct />} />
+              <Route path='/qa' element={<QaPage />} />
             </Routes>
           </ContentWrapper>
         </Content>

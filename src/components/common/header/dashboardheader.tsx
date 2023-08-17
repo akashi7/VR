@@ -36,7 +36,10 @@ const DashNavBar: FC = (): ReactElement => {
           hello, ar
         </div>
         <div className='flex lg:justify-between items-center '>
-          <div className='text-sm m-[8px] hidden lg:block hover:cursor-pointer'>
+          <div
+            className='text-sm m-[8px] hidden lg:block hover:cursor-pointer'
+            onClick={() => navigates('pr/qa')}
+          >
             고객 센터
           </div>
           <div
