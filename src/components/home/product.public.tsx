@@ -21,7 +21,6 @@ import {
 import { colorsWithBackground } from './utils'
 const baseURL = import.meta.env.VITE_SERVER_URL
 
-
 declare global {
   namespace JSX {
     interface IntrinsicElements {
@@ -128,11 +127,11 @@ const PublicProduct: FC = (): ReactElement => {
   }
 
   return (
-    <div className=' h-[100%] bg-white w-[100%] p-5 '>
+    <div className=' h-[100vh] bg-white w-[100%] p-5 '>
       <div className='text-center mb-5 text-sm font-light mt-10'>
         <p className=' italic font-light'>Serviced by HelloVR</p>
       </div>
-      <div className=' mx-auto  h-[650px] w-[100%] md:w-[60%] xl:w-[30%]  lg:w-[50%]'>
+      <div className=' mx-auto  h-[75%] lg:h-[650px] w-[100%] md:w-[60%] xl:w-[30%]  lg:w-[50%]'>
         <model-viewer
           src={`${baseURL}${
             oneProduct &&
