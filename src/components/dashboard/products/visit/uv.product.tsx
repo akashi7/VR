@@ -13,6 +13,7 @@ import {
 } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 // import chart from '../../../../assets/images/ChartTwo.png'
+import { Line } from '@ant-design/charts'
 import { RootState } from '../../../../state'
 import {
   productAnalyticsApi,
@@ -20,7 +21,6 @@ import {
 } from '../../../../state/slices/product.slice'
 import Paginator from '../../../common/paginator'
 import UvCards from '../../common/products/uv.cards'
-import { Line } from '@ant-design/charts'
 const baseURL = import.meta.env.VITE_SERVER_URL
 
 declare global {
@@ -40,15 +40,15 @@ declare global {
 
 const UvProduct: FC = (): ReactElement => {
   const data = [
-    { year: '1991', value: 3 },
-    { year: '1992', value: 4 },
-    { year: '1993', value: 3.5 },
-    { year: '1994', value: 5 },
-    { year: '1995', value: 4.9 },
-    { year: '1996', value: 6 },
-    { year: '1997', value: 7 },
-    { year: '1998', value: 9 },
-    { year: '1999', value: 13 },
+    { year: '1991', value: 3, line: 'Line A' },
+    { year: '1992', value: 4, line: 'Line A' },
+    { year: '1993', value: 3.5, line: 'Line A' },
+    { year: '1994', value: 5, line: 'Line B' },
+    { year: '1995', value: 4.9, line: 'Line B' },
+    { year: '1996', value: 6, line: 'Line B' },
+    { year: '1997', value: 7, line: 'Line C' },
+    { year: '1998', value: 9, line: 'Line C' },
+    { year: '1999', value: 13, line: 'Line C' },
   ]
 
   const config = {
@@ -57,6 +57,7 @@ const UvProduct: FC = (): ReactElement => {
     height: 400,
     xField: 'year',
     yField: 'value',
+    seriesField: 'line',
     point: {
       size: 5,
       shape: 'diamond',
