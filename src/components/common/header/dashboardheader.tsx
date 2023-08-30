@@ -72,12 +72,21 @@ const DashNavBar: FC = (): ReactElement => {
           <div className='flex flex-col items-left mt-[10px] '>
             <div
               className='text-sm m-[8px] hover:cursor-pointer'
-              onClick={() => navigates('login')}
+              onClick={() => navigates('pr/qa')}
             >
-              로그인
+              고객 센터
             </div>
-            <div className='text-sm m-[8px] hover:cursor-pointer'>
+            <div
+              className='text-sm m-[8px] hover:cursor-pointer'
+              onClick={() => navigates('sd')}
+            >
               관리 분석
+            </div>
+            <div
+              className='text-sm m-[8px] hover:cursor-pointer'
+              onClick={() => navigates('pr')}
+            >
+              마이 페이지
             </div>
           </div>
         </Drawer>
