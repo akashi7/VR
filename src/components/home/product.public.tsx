@@ -19,6 +19,8 @@ import {
   viewProductApi,
 } from '../../state/slices/product.slice'
 import { colorsWithBackground } from './utils'
+const baseURL = import.meta.env.VITE_SERVER_URL
+
 
 declare global {
   namespace JSX {
@@ -132,7 +134,7 @@ const PublicProduct: FC = (): ReactElement => {
       </div>
       <div className=' mx-auto  h-[650px] w-[100%] md:w-[60%] xl:w-[30%]  lg:w-[50%]'>
         <model-viewer
-          src={`http://192.168.88.122:5000${
+          src={`${baseURL}${
             oneProduct &&
             oneProduct.products &&
             oneProduct?.products[Index]?.model_file
