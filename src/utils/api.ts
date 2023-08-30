@@ -18,7 +18,8 @@ instance.interceptors.request.use(
     if (
       config.url &&
       (config.url.includes('auth/kakao/') ||
-        config.url.includes('auth/google/'))
+        config.url.includes('auth/google/') ||
+        config.url.includes('product/unauthenticated/'))
     ) {
       return config
     }
