@@ -70,7 +70,10 @@ const HomeNavBar: FC = (): ReactElement => {
             >
               로그인
             </div>
-            <div className='text-sm m-[8px] hover:cursor-pointer'>
+            <div
+              className='text-sm m-[8px] hover:cursor-pointer'
+              onClick={() => navigates('qa')}
+            >
               관리 분석
             </div>
           </div>
