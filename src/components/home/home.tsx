@@ -24,7 +24,7 @@ const HomePage: FC = (): ReactElement => {
   const navigate = useNavigate()
 
   return (
-    <Layout className='w-full h-[100%] bg-white'>
+    <Layout className='w-full h-[100%]  bg-white'>
       <div className='p-[8px] lg:p-[0px] xl:p-[30px] xl:mx-[130px] '>
         <div className='flex flex-col lg:mt-[-50px] mt-[60px]  w-full lg:h-[720px]  2xl:mt-[100px] lg:flex-row items-center lg:w-[80%] lg:mx-auto  lg:p-[0px] '>
           <div className=' w-full lg:mt-[0px] mt-[15px] md:w-[80%] lg:w-[100%]  xl:w-[50%]  md:pl-[0px] lg:text-left  md:text-center xl:text-left'>
@@ -248,11 +248,11 @@ const HomePage: FC = (): ReactElement => {
             </p>
           </div>
           <div className='w-fit md:pl-[0px] '>
-            <p className='font-medium lg:text-sm text-xs break-all 2xl:text-xl whitespace-nowrap text-Hblack'>
+            <p className='font-medium lg:text-sm text-xs break-all 2xl:text-xl 2xl:whitespace-nowrap text-Hblack'>
               ·원하는 제품만 골라서 라이브시킬 수 있고 나머지 제품들은 대기중인
               목록에서 관리할 수 있습니다
             </p>
-            <p className='font-medium lg:text-sm text-xs break-all 2xl:text-xl whitespace-nowrap text-Hblack'>
+            <p className='font-medium lg:text-sm text-xs break-all 2xl:text-xl 2xl:whitespace-nowrap text-Hblack'>
               . 한 제품이라도 여러 소재, 칼라, 재질을 등록할 수 있습니다.
             </p>
           </div>
@@ -271,15 +271,15 @@ const HomePage: FC = (): ReactElement => {
             </p>
           </div>
           <div className='w-fit md:pl-[0px]  '>
-            <p className='font-medium lg:text-sm text-Hblack break-all 2xl:text-xl whitespace-nowrap'>
+            <p className='font-medium lg:text-sm text-Hblack break-all 2xl:text-xl 2xl:whitespace-nowrap'>
               · 몇 명의 사람들이 얼마나 고객님의 몰에 머물렀는지 분석할 수
               있습니다.
             </p>
-            <p className='font-medium lg:text-sm text-Hblack break-all 2xl:text-xl whitespace-nowrap'>
+            <p className='font-medium lg:text-sm text-Hblack break-all 2xl:text-xl 2xl:whitespace-nowrap'>
               · 어떤 환경에서 어떤 경로로 고객님의 몰에 방문했는지 확인할 수
               있습니다.
             </p>
-            <p className='font-medium lg:text-sm text-Hblack break-all 2xl:text-xl whitespace-nowrap'>
+            <p className='font-medium lg:text-sm text-Hblack break-all 2xl:text-xl 2xl:whitespace-nowrap'>
               · 일반적인 구매 전환율뿐만 아니라 AR 서비스로 인해 발생한 비율까지
               확인할 수 있습니다.
             </p>

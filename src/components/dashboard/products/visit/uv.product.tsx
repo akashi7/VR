@@ -147,9 +147,9 @@ const UvProduct: FC = (): ReactElement => {
 
   const data = filterArray?.map((obj) => {
     return {
-      year: obj.date,
-      value: obj.value,
-      category: obj.category,
+      year: obj?.date,
+      value: obj?.value,
+      category: obj?.category,
     }
   })
 
@@ -181,16 +181,16 @@ const UvProduct: FC = (): ReactElement => {
     let filteredArray = filterArray
 
     if (checkBox === 'total_views') {
-      filteredArray = analytics?.analytics.filter(
-        (item) => item.category === 'total_views'
+      filteredArray = analytics?.analytics?.filter(
+        (item) => item?.category === 'total_views'
       )
     } else if (checkBox === 'total_purchases') {
-      filteredArray = analytics?.analytics.filter(
-        (item) => item.category === 'total_purchases'
+      filteredArray = analytics?.analytics?.filter(
+        (item) => item?.category === 'total_purchases'
       )
     } else if (checkBox === 'total_rate') {
-      filteredArray = analytics?.analytics.filter(
-        (item) => item.category === 'total_rate'
+      filteredArray = analytics?.analytics?.filter(
+        (item) => item?.category === 'total_rate'
       )
     }
     setFilterArray(filteredArray)
@@ -342,7 +342,7 @@ const UvProduct: FC = (): ReactElement => {
                         key={product?.id}
                         src={`${baseURL}${
                           product &&
-                          product.products &&
+                          product?.products &&
                           product?.products[0]?.model_file
                         }`}
                         ios-src=''
@@ -360,7 +360,7 @@ const UvProduct: FC = (): ReactElement => {
                     <div className='ml-10'>
                       <p className='text-tcolor mt-1 mb-1 '>
                         {product &&
-                          product.products &&
+                          product?.products &&
                           product?.products[0]?.name}
                       </p>
                       <p className='text-black text-sm font-bold'>
@@ -369,7 +369,7 @@ const UvProduct: FC = (): ReactElement => {
                       <div className='flex flex-row items-center mt-1 mb-1 '>
                         <p
                           className={` bg-mybcc p-[3px] ${
-                            product.health === 'Live'
+                            product?.health === 'Live'
                               ? 'text-[#15BD66]'
                               : 'text-tcolor'
                           }`}
@@ -391,7 +391,7 @@ const UvProduct: FC = (): ReactElement => {
                           ).toFixed(2)}
                           -{' '}
                           {(product &&
-                            product.products &&
+                            product?.products &&
                             product?.products[0]?.file_type) ??
                             'Unknown'}
                         </p>

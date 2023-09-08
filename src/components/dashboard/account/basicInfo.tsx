@@ -64,7 +64,7 @@ const BasicInformation: FC = (): ReactElement => {
     },
   ]
 
-  const matchedPlan = plans.find((plan) => plan.id === planData.plan_id)
+  const matchedPlan = plans?.find((plan) => plan?.id === planData?.plan_id)
 
   const filteredPlanName = matchedPlan ? matchedPlan.planName : ''
 
