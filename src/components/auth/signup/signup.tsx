@@ -2,7 +2,6 @@
 import { Layout } from 'antd'
 import { FC, ReactElement, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import naver from '../../../assets/images/Logo_Naver_24.png'
 import kakao from '../../../assets/images/kakao.png'
 // import { setToLocal } from '../../../helpers/handleLocalStorage'
 import { notification } from 'antd'
@@ -14,7 +13,6 @@ import {
   kakaoAuthSlice,
 } from '../../../state/slices/auth.slice'
 
-import { FaFacebookF } from 'react-icons/fa'
 import { FcGoogle } from 'react-icons/fc'
 
 declare global {
