@@ -43,7 +43,7 @@ const LoginPage: FC = (): ReactElement => {
     notification.success({
       placement: 'top',
       message: (
-        <span className=' text-white'>'성공적으로 수정되었습니다!'</span>
+        <span className=' text-white'>'당신은 로그인되어 있습니다'</span>
       ),
       duration: 5,
       key: 'success',
@@ -102,28 +102,28 @@ const LoginPage: FC = (): ReactElement => {
           </div>
         </div>
         <div className='lg:w-[25%] lg:mt-[40px] w-full absolute lg:relative bottom-[50px] lg:bottom-[0px] left-0 p-[10px] lg:p-[0px]'>
-          <div className='flex flex-row space-x-4  text-center items-center justify-center lg:m-[15px] mb-[8px] lg:mb-[0px] w-[100%] p-[10px] border-solid border-2 border-lgborder'>
+          {/* <div className='flex flex-row space-x-4  text-center items-center justify-center lg:m-[15px] mb-[8px] lg:mb-[0px] w-[100%] p-[10px] border-solid border-2 border-lgborder'>
             <img src={naver} alt='naver' />
-            <p className='font-bold w-[120px]'>네이버로 가입</p>
-          </div>
+            <p className='font-bold w-[120px]'>네이버로 로그인</p>
+          </div> */}
           <div
             className='flex flex-row space-x-4 items-center text-center justify-center lg:m-[15px] mb-[8px] lg:mb-[0px] w-[100%] p-[10px] border-solid border-2 border-lgborder hover:cursor-pointer'
             onClick={() => loginWithKakao()}
           >
             <img src={kakao} alt='kakao' />
-            <p className='font-bold w-[120px]'>카카오로 가입</p>
+            <p className='font-bold w-[120px]'>카카오로 로그인</p>
           </div>
           <div
             className='flex flex-row space-x-4 items-center text-center justify-center lg:m-[15px] mb-[8px] lg:mb-[0px] w-[100%] p-[10px] border-solid border-2 border-lgborder hover:cursor-pointer'
             onClick={() => login()}
           >
             <FcGoogle size={20} />
-            <p className='font-bold w-[120px]'>구글로 가입</p>
+            <p className='font-bold w-[120px]'>구글로 로그인</p>
           </div>
-          <div className='flex flex-row space-x-4 items-center text-center justify-center lg:m-[15px] mb-[8px] lg:mb-[0px] w-[100%] p-[10px] border-solid border-2 border-lgborder'>
+          {/* <div className='flex flex-row space-x-4 items-center text-center justify-center lg:m-[15px] mb-[8px] lg:mb-[0px] w-[100%] p-[10px] border-solid border-2 border-lgborder'>
             <FaFacebookF size={20} color='blue' />
-            <p className='font-bold w-[120px]'>페이스북으로 가입</p>
-          </div>
+            <p className='font-bold w-[120px]'>페이스북으로 로그인</p>
+          </div> */}
         </div>
         <div className='lg:mt-[20px] flex flex-row  w-[90%] justify-center  absolute bottom-[20px] lg:bottom-[0px] lg:relative '>
           <p className='font-medium text-sm text-black  text-center'>

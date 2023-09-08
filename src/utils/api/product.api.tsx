@@ -22,8 +22,9 @@ export const purchaseProduct = (id: string) => {
   return http.POST(`service/product/add/purchase/${id}`)
 }
 
-export const getProductAnalytics = (id: string) => {
-  return http.GET(`service/product/analytiics/${id}`)
+export const getProductAnalytics = (id: string, query?: string) => {
+  const queryString = query ? `?${query}` : ''
+  return http.GET(`service/product/analytiics/${id}${queryString}`)
 }
 
 export const updateJsonProduct = (id: string, data: any) => {

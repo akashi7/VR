@@ -71,13 +71,20 @@ const SignUpPage: FC = (): ReactElement => {
   }
 
   const loginWithKakao = (): void => {
-    const data: any = {
-      access_token: 'WELRjMxthzZeO7iWtnpYNFNCGdulvvbMGoFtpTzTCisMpgAAAYnUULf_',
-      id_token:
-        'eyJraWQiOiI5ZjI1MmRhZGQ1ZjIzM2Y5M2QyZmE1MjhkMTJmZWEiLCJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI1MjkyYWE1ZmRjNDA4ZjRiNGY2NTgyMDI5ZjVmZWJhZSIsInN1YiI6IjI4NDA4NjI3MzAiLCJhdXRoX3RpbWUiOjE2OTE0ODQyMDcsImlzcyI6Imh0dHBzOi8va2F1dGgua2FrYW8uY29tIiwibmlja25hbWUiOiJoZWxsb1ZSIiwiZXhwIjoxNjkxNDkxNDA3LCJpYXQiOjE2OTE0ODQyMDcsInBpY3R1cmUiOiJodHRwOi8vay5rYWthb2Nkbi5uZXQvZG4vZHBrOWwxL2J0cW1HaEEybEtML096MHdEdUpuMVlWMkRJbjkyZjZEVksvaW1nXzExMHgxMTAuanBnIiwiZW1haWwiOiJoZWxsb3ZyQGtha2FvLmNvbSJ9.LOPDeNEAY2HvFjd6BFyqzCvcoKWvFmzZO3bAhQHlZ9NHPAG2snmxZvzLVEDYUQhthBpf5s6XXVdRGxM6qfBZNH6y7apvtvDsSHa-6K_FdSFRTiNORjtkorIXkv12o02r9qx2r5igo8v0CCiZG1FwuMYEBuKFHhoa-tleGFb8agXgCm123dNzb38ns4RwNlifq-rMRkUN_DeZm59wB0fwzBS1DumljtAZeSws4G96ocU8vjPhBEMHhdSUOUcLHRnkhvetF-vCunc1S0fJy7Z6xeRNelBK9cd6RbHJLIe3a8e-sQ_Tr2gikEs7H_IOdNNjM_2GxvNkTrSxX5ow8u9vpA',
-      code: '',
+    if (window.Kakao && window.Kakao.Auth) {
+      window.Kakao.Auth.login({
+        success: (res: any) => {
+          const data: any = {
+            access_token: res?.access_token,
+            id_token: res?.id_token,
+          }
+          dispatch(kakaoAuthSlice({ data, success, Error }) as any)
+        },
+        fail: (err: unknown) => {
+          console.log({ err })
+        },
+      })
     }
-    dispatch(kakaoAuthSlice({ data, success, Error }) as any)
   }
 
   const login = useGoogleLogin({
@@ -99,10 +106,10 @@ const SignUpPage: FC = (): ReactElement => {
           </div>
         </div>
         <div className='lg:w-[25%] lg:mt-[40px] w-full absolute lg:relative bottom-[50px] lg:bottom-[0px] left-0 p-[10px] lg:p-[0px]'>
-          <div className='flex flex-row space-x-4  text-center items-center justify-center lg:m-[15px] mb-[8px] lg:mb-[0px] w-[100%] p-[10px] border-solid border-2 border-lgborder'>
+          {/* <div className='flex flex-row space-x-4  text-center items-center justify-center lg:m-[15px] mb-[8px] lg:mb-[0px] w-[100%] p-[10px] border-solid border-2 border-lgborder'>
             <img src={naver} alt='naver' />
             <p className='font-bold w-[120px]'>네이버로 가입</p>
-          </div>
+          </div> */}
           <div
             className='flex flex-row space-x-4 items-center text-center justify-center lg:m-[15px] mb-[8px] lg:mb-[0px] w-[100%] p-[10px] border-solid border-2 border-lgborder hover:cursor-pointer'
             onClick={() => loginWithKakao()}
@@ -117,10 +124,10 @@ const SignUpPage: FC = (): ReactElement => {
             <FcGoogle size={20} />
             <p className='font-bold w-[120px]'>구글로 가입</p>
           </div>
-          <div className='flex flex-row space-x-4 items-center text-center justify-center lg:m-[15px] mb-[8px] lg:mb-[0px] w-[100%] p-[10px] border-solid border-2 border-lgborder'>
+          {/* <div className='flex flex-row space-x-4 items-center text-center justify-center lg:m-[15px] mb-[8px] lg:mb-[0px] w-[100%] p-[10px] border-solid border-2 border-lgborder'>
             <FaFacebookF size={20} color='blue' />
             <p className='font-bold w-[120px]'>페이스북으로 가입</p>
-          </div>
+          </div> */}
         </div>
         <div className='lg:mt-[20px] flex flex-row space-x-4 text-center w-[90%] justify-center  absolute bottom-[20px] lg:bottom-[0px] lg:relative '>
           <p className='font-medium text-sm text-black  text-center'>

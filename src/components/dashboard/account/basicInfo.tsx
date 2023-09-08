@@ -5,8 +5,14 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useMatch, useNavigate } from 'react-router-dom'
 import { RootState } from '../../../state'
 import { userSlice } from '../../../state/slices/auth.slice'
+import { getPlanApi } from '../../../state/slices/services.slice'
 import { CheckBox } from '../../common/input'
 import { GlobalModel } from '../../modals'
+
+interface PlansInterface {
+  id: number
+  planName: string
+}
 
 const BasicInformation: FC = (): ReactElement => {
   const basicInfoMatch = useMatch('/sd/')
@@ -21,6 +27,7 @@ const BasicInformation: FC = (): ReactElement => {
   const dispatch = useDispatch()
 
   const { userData } = useSelector((state: RootState) => state.auth)
+  const { planData } = useSelector((state: RootState) => state.service)
 
   const [isChecked, setIsChecked] = useState<boolean>(false)
   const [toogle, setToogle] = useState<boolean>(false)
@@ -29,9 +36,37 @@ const BasicInformation: FC = (): ReactElement => {
     setIsChecked(isChecked)
   }
 
+  useEffect(() => {
+    dispatch(getPlanApi({ Error }) as any)
+    //eslint-disable-next-line
+  }, [])
+
   const Toogle = () => {
     setToogle(!toogle)
   }
+
+  const plans: Array<PlansInterface> = [
+    {
+      id: 1,
+      planName: '기본 요금제',
+    },
+    {
+      id: 2,
+      planName: '레벨 2 요금제',
+    },
+    {
+      id: 3,
+      planName: '레벨 3 요금제',
+    },
+    {
+      id: 4,
+      planName: '프리미엄 요금제',
+    },
+  ]
+
+  const matchedPlan = plans.find((plan) => plan.id === planData.plan_id)
+
+  const filteredPlanName = matchedPlan ? matchedPlan.planName : ''
 
   function Error() {
     notification.error({
@@ -186,11 +221,16 @@ const BasicInformation: FC = (): ReactElement => {
               <div className='flex flex-col'>
                 <p className='font-semibold text-sm'>이용 중인 요금제</p>
                 <p className='font-thin text-sm  text-tcolor mt-[5px] '>
-                  아직 사용 중인 요금제가 없습니다.
+                  {filteredPlanName
+                    ? filteredPlanName
+                    : '아직 사용 중인 요금제가 없습니다.'}
                 </p>
               </div>
               <div>
-                <button className='w-fit  text-black  font-medium  text-sm p-[10px] text-center border-solid border-2 border-navactive-800'>
+                <button
+                  className='w-fit  text-black  font-medium  text-sm p-[10px] text-center border-solid border-2 border-navactive-800'
+                  onClick={() => navigate('/sd/plan')}
+                >
                   요금제 보기
                 </button>
               </div>
