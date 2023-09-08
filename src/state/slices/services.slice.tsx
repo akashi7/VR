@@ -20,7 +20,7 @@ interface heatlh {
   results: Array<category>
 }
 
-interface planData {
+export interface planDataInterface {
   plan_id: number
 }
 
@@ -30,7 +30,7 @@ export interface ServiceState {
   heatlhLoading: boolean
   healthData: heatlh
   planLoading: boolean
-  planData: planData
+  planData: planDataInterface
 }
 
 const initialState: ServiceState = {
@@ -156,7 +156,7 @@ const serviceSlice = createSlice({
       })
       .addCase(
         getPlanApi.fulfilled,
-        (state, action: PayloadAction<planData>) => {
+        (state, action: PayloadAction<planDataInterface>) => {
           state.planLoading = false
           state.planData = action.payload
         }
