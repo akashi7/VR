@@ -1,18 +1,24 @@
-import { Layout } from 'antd'
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-namespace */
+import { Layout, notification } from 'antd'
 import { FC, ReactElement, useState } from 'react'
+import { useDispatch } from 'react-redux'
 import { useMatch, useNavigate } from 'react-router-dom'
+import { createPlanApi } from '../../../state/slices/services.slice'
 import { GlobalModel } from '../../modals'
 import Plans from '../common/account/plans'
 
 const PlanManagment: FC = (): ReactElement => {
+  const dispatch = useDispatch()
   const basicInfoMatch = useMatch('/sd/')
   const planMatch = useMatch('/sd/plan')
   const navigate = useNavigate()
-  const [isChecked, setIsChecked] = useState<boolean>(false)
   const [toogle, setToogle] = useState<boolean>(false)
-  const [selectedPlanIndex, setSelectedPlanIndex] = useState<number>(0)
-  const handleCheckboxChange = (isChecked: boolean) => {
-    setIsChecked(isChecked)
+  const [selectedPlanIndex, setSelectedPlanIndex] = useState<number | null>(
+    null
+  )
+  const handleCheckboxChange = (value: number) => {
+    setSelectedPlanIndex(value === selectedPlanIndex ? null : value)
   }
   const handlePlanSelect = (index: number) => {
     setSelectedPlanIndex(index)
@@ -20,6 +26,31 @@ const PlanManagment: FC = (): ReactElement => {
   const Toogle = () => {
     setToogle(!toogle)
   }
+
+  function Error() {
+    notification.error({
+      placement: 'top',
+      message: <span className=' text-red'>'뭔가 잘못!!'</span>,
+      duration: 3,
+      key: 'error',
+      style: {},
+    })
+  }
+
+  function success() {
+    navigate('/sd/')
+  }
+
+  const handleDispatch = () => {
+    dispatch(
+      createPlanApi({
+        data: { plan_id: selectedPlanIndex },
+        Error,
+        success,
+      }) as any
+    )
+  }
+
   function PayContent() {
     return (
       <div>
@@ -34,7 +65,10 @@ const PlanManagment: FC = (): ReactElement => {
             </button>
           </div>
           <div className='w-[50%] pl-[15px]'>
-            <button className='w-full font-medium rounded  text-sm p-[10px] text-center text-white bg-black'>
+            <button
+              className='w-full font-medium rounded  text-sm p-[10px] text-center text-white bg-black'
+              onClick={handleDispatch}
+            >
               네
             </button>
           </div>
@@ -86,9 +120,11 @@ const PlanManagment: FC = (): ReactElement => {
           <div>
             <button
               className={`lg:w-fit w-full hidden lg:block ${
-                isChecked ? 'bg-black text-white' : 'bg-mybcc text-mycloror'
+                selectedPlanIndex
+                  ? 'bg-black text-white'
+                  : 'bg-mybcc text-mycloror'
               } font-medium  text-sm p-[10px] text-center `}
-              disabled={!isChecked}
+              disabled={!selectedPlanIndex}
               onClick={() => Toogle()}
             >
               결제하기
@@ -97,8 +133,7 @@ const PlanManagment: FC = (): ReactElement => {
         </div>
         <div className='mt-[20px] lg:mt-[40px] xl:grid  xl:grid-cols-4 xl:gap-5 xl:h-[600px]'>
           <Plans
-            handleCheckboxChange={handleCheckboxChange}
-            isChecked={isChecked}
+            handleCheckboxChange={() => handleCheckboxChange(1)}
             titles={[
               '기본 요금제',
               '가장 기본 요금제 입니다.',
@@ -110,11 +145,10 @@ const PlanManagment: FC = (): ReactElement => {
             ]}
             selectedPlanIndex={selectedPlanIndex}
             handlePlanSelect={handlePlanSelect}
-            index={0}
+            index={1}
           />
           <Plans
-            handleCheckboxChange={handleCheckboxChange}
-            isChecked={isChecked}
+            handleCheckboxChange={() => handleCheckboxChange(2)}
             titles={[
               '레벨 2 요금제',
               '레벨 2 요금제 입니다.',
@@ -126,11 +160,10 @@ const PlanManagment: FC = (): ReactElement => {
             ]}
             selectedPlanIndex={selectedPlanIndex}
             handlePlanSelect={handlePlanSelect}
-            index={1}
+            index={2}
           />
           <Plans
-            handleCheckboxChange={handleCheckboxChange}
-            isChecked={isChecked}
+            handleCheckboxChange={() => handleCheckboxChange(3)}
             titles={[
               '레벨 3 요금제',
               '레벨 3 요금제 입니다.',
@@ -142,11 +175,10 @@ const PlanManagment: FC = (): ReactElement => {
             ]}
             selectedPlanIndex={selectedPlanIndex}
             handlePlanSelect={handlePlanSelect}
-            index={2}
+            index={3}
           />
           <Plans
-            handleCheckboxChange={handleCheckboxChange}
-            isChecked={isChecked}
+            handleCheckboxChange={() => handleCheckboxChange(4)}
             titles={[
               '프리미엄 요금제',
               '프리미엄 요금제 입니다.',
@@ -158,7 +190,7 @@ const PlanManagment: FC = (): ReactElement => {
             ]}
             selectedPlanIndex={selectedPlanIndex}
             handlePlanSelect={handlePlanSelect}
-            index={3}
+            index={4}
           />
         </div>
         {toogle && (
@@ -173,12 +205,12 @@ const PlanManagment: FC = (): ReactElement => {
         <div>
           <button
             className={`w-full block xl:hidden ${
-              isChecked
+              selectedPlanIndex
                 ? 'bg-black text-white'
                 : 'bg-mybcc text-mycloror border-solid border-2 border-navactive-800'
             } font-medium  text-sm p-[10px] text-center `}
             onClick={() => Toogle()}
-            disabled={!isChecked}
+            disabled={!selectedPlanIndex}
           >
             결제하기
           </button>

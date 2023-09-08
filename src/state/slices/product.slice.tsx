@@ -50,11 +50,10 @@ export interface ProductState {
   analytics: Analytics
 }
 
-interface OneAnalytic {
+export interface OneAnalytic {
   date: string
-  views: number
-  purchases: number
-  rate: number
+  category: string
+  value: number
 }
 
 export interface Analytics {
@@ -93,9 +92,8 @@ const initialState: ProductState = {
     analytics: [
       {
         date: '',
-        views: 0,
-        purchases: 0,
-        rate: 0,
+        category: '',
+        value: 0,
       },
     ],
   },
@@ -121,6 +119,7 @@ interface viewOneProductData {
 
 interface recordProductInt {
   id: string
+  query?: string
   Error: (error?: any) => void
 }
 
@@ -261,8 +260,8 @@ export const purchaseProductApi = createAsyncThunk(
 
 export const productAnalyticsApi = createAsyncThunk(
   'product-analytics',
-  async ({ id, Error }: recordProductInt, { rejectWithValue }) => {
-    return getProductAnalytics(id)
+  async ({ id, query, Error }: recordProductInt, { rejectWithValue }) => {
+    return getProductAnalytics(id, query)
       .then((resp) => {
         return resp.data
       })

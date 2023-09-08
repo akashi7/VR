@@ -12,7 +12,7 @@ const SignUpDashboardRoute: FC = (): ReactElement => {
   return (
     <Layout className='h-[100%] bg-white w-full'>
       <div className='h-[100%]  bg-white w-full'>
-        <div className='fixed w-full top-0 border-b-2 border-navactive'>
+        <div className='fixed w-full top-0 border-b-2 border-navactive h-16 p-2'>
           <DashNavBar />
         </div>
         <div className='mt-[50px] w-full h-full '>

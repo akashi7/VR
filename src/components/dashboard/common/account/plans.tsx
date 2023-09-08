@@ -1,20 +1,17 @@
 import { FC, ReactElement } from 'react'
 import okImage from '../../../../assets/images/ok.png'
-import { CheckBox } from '../../../common/input'
 
 type PlansProps = {
-  handleCheckboxChange: (isChecked: boolean) => void
+  handleCheckboxChange: (value: number) => void
   handlePlanSelect: (index: number) => void
-  isChecked: boolean
   titles: string[]
-  selectedPlanIndex: number
+  selectedPlanIndex: number | null
   index: number
 }
 
 const Plans: FC<PlansProps> = ({
   handleCheckboxChange,
   handlePlanSelect,
-  isChecked,
   titles,
   selectedPlanIndex,
   index,
@@ -22,9 +19,7 @@ const Plans: FC<PlansProps> = ({
   return (
     <div
       className={`w-[100%] p-[20px] border ${
-        index === selectedPlanIndex && isChecked
-          ? 'border-hblue'
-          : 'border-mycloror-600'
+        index === selectedPlanIndex ? 'border-hblue' : 'border-mycloror-600'
       } mb-[20px] rounded-md`}
       onClick={() => handlePlanSelect(index)}
     >
@@ -38,9 +33,15 @@ const Plans: FC<PlansProps> = ({
           </p>
         </div>
         <div>
-          <CheckBox
+          {/* <CheckBox
             onChange={handleCheckboxChange}
             checked={index === selectedPlanIndex && isChecked}
+            className={`lg:h-5 lg:w-5 h-4 w-4 accent-black`}
+          /> */}
+          <input
+            type='checkbox'
+            onChange={() => handleCheckboxChange(index)}
+            checked={index === selectedPlanIndex}
             className={`lg:h-5 lg:w-5 h-4 w-4 accent-black`}
           />
         </div>

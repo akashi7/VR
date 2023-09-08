@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-namespace */
 import '@google/model-viewer/'
-import { Layout, notification } from 'antd'
+import { DatePicker, Layout, Select, notification } from 'antd'
 import moment from 'moment'
 import {
   CSSProperties,
@@ -13,14 +13,18 @@ import {
 } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 // import chart from '../../../../assets/images/ChartTwo.png'
+import chart from '../../../../assets/images/ChartNo.png'
+
 import { Line } from '@ant-design/charts'
 import { RootState } from '../../../../state'
 import {
+  OneAnalytic,
   productAnalyticsApi,
   productListApi,
 } from '../../../../state/slices/product.slice'
 import Paginator from '../../../common/paginator'
 import UvCards from '../../common/products/uv.cards'
+
 const baseURL = import.meta.env.VITE_SERVER_URL
 
 declare global {
@@ -38,42 +42,19 @@ declare global {
   }
 }
 
+const { RangePicker } = DatePicker
+
 const UvProduct: FC = (): ReactElement => {
-  const data = [
-    { year: '1991', value: 3, line: 'Line A' },
-    { year: '1992', value: 4, line: 'Line A' },
-    { year: '1993', value: 3.5, line: 'Line A' },
-    { year: '1994', value: 5, line: 'Line B' },
-    { year: '1995', value: 4.9, line: 'Line B' },
-    { year: '1996', value: 6, line: 'Line B' },
-    { year: '1997', value: 7, line: 'Line C' },
-    { year: '1998', value: 9, line: 'Line C' },
-    { year: '1999', value: 13, line: 'Line C' },
-  ]
-
-  const config = {
-    data,
-    width: 1200,
-    height: 400,
-    xField: 'year',
-    yField: 'value',
-    seriesField: 'line',
-    point: {
-      size: 5,
-      shape: 'diamond',
-    },
-    label: {
-      style: {
-        fill: '#aaa',
-      },
-    },
-  }
-
   const dispatch = useDispatch()
 
   const [selectedCheckbox, setSelectedCheckbox] = useState<string | null>(null)
+  const [prevId, setPrevId] = useState<number | null>(null)
+  const [filterArray, setFilterArray] = useState<OneAnalytic[]>([])
+  const [checkBox, setCheckBox] = useState<string>('')
+  const [custom, setCustom] = useState<boolean>(false)
 
   const handleCheckboxChange = (value: string) => {
+    setCheckBox(value)
     setSelectedCheckbox(value === selectedCheckbox ? null : value)
   }
 
@@ -88,10 +69,20 @@ const UvProduct: FC = (): ReactElement => {
   useEffect(() => {
     if (selectedProductId) {
       dispatch(
-        productAnalyticsApi({ id: selectedProductId.toString(), Error }) as any
+        productAnalyticsApi({
+          id: selectedProductId.toString(),
+          query: `date_filter=last_week`,
+          Error,
+        }) as any
       )
     }
     //eslint-disable-next-line
+  }, [selectedProductId])
+
+  useEffect(() => {
+    if (selectedProductId) {
+      setPrevId(selectedProductId)
+    }
   }, [selectedProductId])
 
   const productContainerRef = useRef<HTMLDivElement | null>(null)
@@ -126,6 +117,8 @@ const UvProduct: FC = (): ReactElement => {
   useEffect(() => {
     return () => {
       setSelectedProductId(null)
+      setPrevId(null)
+      setCheckBox('')
     }
   }, [])
 
@@ -136,10 +129,90 @@ const UvProduct: FC = (): ReactElement => {
     //eslint-disable-next-line
   }, [currentPage])
 
-  const options = [
-    { label: '전체', value: 'all' },
-    { label: '온도조절기', value: 'air_conditioner' },
-  ]
+  const handleChange = (e: any) => {
+    if (prevId) {
+      if (e === 'custom') {
+        setCustom(true)
+      } else {
+        dispatch(
+          productAnalyticsApi({
+            id: prevId.toString(),
+            query: `date_filter=${e}`,
+            Error,
+          }) as any
+        )
+      }
+    }
+  }
+
+  const data = filterArray?.map((obj) => {
+    return {
+      year: obj.date,
+      value: obj.value,
+      category: obj.category,
+    }
+  })
+
+  const config = {
+    data,
+    width: 1200,
+    height: 400,
+    xField: 'year',
+    yField: 'value',
+    seriesField: 'category',
+    point: {
+      size: 5,
+      shape: 'diamond',
+    },
+    label: {
+      style: {
+        fill: '#aaa',
+      },
+    },
+  }
+
+  useEffect(() => {
+    if (analytics) {
+      setFilterArray(analytics?.analytics)
+    }
+  }, [analytics])
+
+  useEffect(() => {
+    let filteredArray = filterArray
+
+    if (checkBox === 'total_views') {
+      filteredArray = analytics?.analytics.filter(
+        (item) => item.category === 'total_views'
+      )
+    } else if (checkBox === 'total_purchases') {
+      filteredArray = analytics?.analytics.filter(
+        (item) => item.category === 'total_purchases'
+      )
+    } else if (checkBox === 'total_rate') {
+      filteredArray = analytics?.analytics.filter(
+        (item) => item.category === 'total_rate'
+      )
+    }
+    setFilterArray(filteredArray)
+    //eslint-disable-next-line
+  }, [checkBox])
+
+  const handleDateChange = (e: any) => {
+    if (!e) {
+      return
+    }
+    if (prevId) {
+      dispatch(
+        productAnalyticsApi({
+          id: prevId.toString(),
+          query: `date_from=${moment(e?.[0]?.toISOString()).format(
+            'YYYY-MM-DD'
+          )}&date_to=${moment(e?.[1]?.toISOString()).format('YYYY-MM-DD')}`,
+          Error,
+        }) as any
+      )
+    }
+  }
 
   return (
     <Layout className=' h-[100%] p-[5px] bg-white '>
@@ -155,18 +228,30 @@ const UvProduct: FC = (): ReactElement => {
           </div>
           <div className='flex flex-row items-center '>
             <div>
-              <select
-                className={
-                  'inline-block p-[10px] bg-white border border-gray-300  focus:outline-none focus:border-blue-500 '
-                }
-              >
-                <option className='text-tcolor'>Select option</option>
-                {options?.map((option, index) => (
-                  <option key={index} value={option.value}>
-                    {option?.label}
-                  </option>
-                ))}
-              </select>
+              {custom ? (
+                <div className='flex flex-row items-center'>
+                  <RangePicker onChange={handleDateChange} />
+                  <div
+                    className='pl-3 hover:cursor-pointer'
+                    onClick={() => setCustom(false)}
+                  >
+                    X
+                  </div>
+                </div>
+              ) : (
+                <Select
+                  style={{ width: 200 }}
+                  onChange={handleChange}
+                  className='inline-block p-[10px]  focus:outline-none focus:border-blue-500 '
+                  defaultValue={'날짜를 선택하세요'}
+                  options={[
+                    { value: 'last_day', label: '지난 1일' },
+                    { value: 'last_week', label: '7일' },
+                    { value: 'last_month', label: '30일' },
+                    { value: 'custom', label: '직접 날짜 선택' },
+                  ]}
+                />
+              )}
             </div>
           </div>
         </div>
@@ -179,14 +264,18 @@ const UvProduct: FC = (): ReactElement => {
           </div>
         </div>
         <div className='mt-[50px] '>
-          <Line {...config} />
+          {selectedProductId || prevId ? (
+            <Line {...config} />
+          ) : (
+            <img src={chart} alt='chart' />
+          )}
         </div>
         <div className='flex flex-row items-center mt-[55px]'>
           <div className='flex flex-row items-center '>
             <input
               type='checkbox'
-              onChange={() => handleCheckboxChange('visitor')}
-              checked={selectedCheckbox === 'visitor'}
+              onChange={() => handleCheckboxChange('total_views')}
+              checked={selectedCheckbox === 'total_views'}
               className={`lg:h-5 lg:w-5 h-4 w-4 accent-black`}
             />
             <p className='font-bold pl-[10px]'>방문자 수</p>
@@ -194,8 +283,8 @@ const UvProduct: FC = (): ReactElement => {
           <div className='flex flex-row items-center pl-[20px]'>
             <input
               type='checkbox'
-              onChange={() => handleCheckboxChange('newVisitor')}
-              checked={selectedCheckbox === 'newVisitor'}
+              onChange={() => handleCheckboxChange('total_purchases')}
+              checked={selectedCheckbox === 'total_purchases'}
               className={`lg:h-5 lg:w-5 h-4 w-4 accent-black`}
             />
             <p className='font-bold pl-[10px]'>신규 방문자 수</p>
@@ -203,8 +292,8 @@ const UvProduct: FC = (): ReactElement => {
           <div className='flex flex-row items-center pl-[20px]'>
             <input
               type='checkbox'
-              onChange={() => handleCheckboxChange('conversionRate')}
-              checked={selectedCheckbox === 'conversionRate'}
+              onChange={() => handleCheckboxChange('total_rate')}
+              checked={selectedCheckbox === 'total_rate'}
               className={`lg:h-5 lg:w-5 h-4 w-4 accent-black`}
             />
             <p className='font-bold pl-[10px]'>구매전환율(%)</p>
