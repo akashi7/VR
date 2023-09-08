@@ -7,6 +7,8 @@ import { useMatch, useNavigate } from 'react-router-dom'
 import { createPlanApi } from '../../../state/slices/services.slice'
 import { GlobalModel } from '../../modals'
 import Plans from '../common/account/plans'
+import { RootState } from '../../../state'
+import { useSelector } from 'react-redux'
 
 const PlanManagment: FC = (): ReactElement => {
   const dispatch = useDispatch()
@@ -26,6 +28,8 @@ const PlanManagment: FC = (): ReactElement => {
   const Toogle = () => {
     setToogle(!toogle)
   }
+
+  const { planData } = useSelector((state: RootState) => state.service)
 
   function Error() {
     notification.error({
@@ -146,6 +150,7 @@ const PlanManagment: FC = (): ReactElement => {
             selectedPlanIndex={selectedPlanIndex}
             handlePlanSelect={handlePlanSelect}
             index={1}
+            planData={planData}
           />
           <Plans
             handleCheckboxChange={() => handleCheckboxChange(2)}
@@ -161,6 +166,7 @@ const PlanManagment: FC = (): ReactElement => {
             selectedPlanIndex={selectedPlanIndex}
             handlePlanSelect={handlePlanSelect}
             index={2}
+            planData={planData}
           />
           <Plans
             handleCheckboxChange={() => handleCheckboxChange(3)}
@@ -176,6 +182,7 @@ const PlanManagment: FC = (): ReactElement => {
             selectedPlanIndex={selectedPlanIndex}
             handlePlanSelect={handlePlanSelect}
             index={3}
+            planData={planData}
           />
           <Plans
             handleCheckboxChange={() => handleCheckboxChange(4)}
@@ -191,6 +198,7 @@ const PlanManagment: FC = (): ReactElement => {
             selectedPlanIndex={selectedPlanIndex}
             handlePlanSelect={handlePlanSelect}
             index={4}
+            planData={planData}
           />
         </div>
         {toogle && (

@@ -1,5 +1,6 @@
 import { FC, ReactElement } from 'react'
 import okImage from '../../../../assets/images/ok.png'
+import { planDataInterface } from '../../../../state/slices/services.slice'
 
 type PlansProps = {
   handleCheckboxChange: (value: number) => void
@@ -7,6 +8,7 @@ type PlansProps = {
   titles: string[]
   selectedPlanIndex: number | null
   index: number
+  planData: planDataInterface
 }
 
 const Plans: FC<PlansProps> = ({
@@ -15,11 +17,14 @@ const Plans: FC<PlansProps> = ({
   titles,
   selectedPlanIndex,
   index,
+  planData,
 }): ReactElement => {
   return (
     <div
       className={`w-[100%] p-[20px] border ${
-        index === selectedPlanIndex ? 'border-hblue' : 'border-mycloror-600'
+        index === (selectedPlanIndex || planData?.plan_id)
+          ? 'border-hblue'
+          : 'border-mycloror-600'
       } mb-[20px] rounded-md`}
       onClick={() => handlePlanSelect(index)}
     >
@@ -41,7 +46,7 @@ const Plans: FC<PlansProps> = ({
           <input
             type='checkbox'
             onChange={() => handleCheckboxChange(index)}
-            checked={index === selectedPlanIndex}
+            checked={index === (selectedPlanIndex || planData?.plan_id)}
             className={`lg:h-5 lg:w-5 h-4 w-4 accent-black`}
           />
         </div>
