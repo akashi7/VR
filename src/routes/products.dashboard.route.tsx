@@ -8,12 +8,12 @@ import FinishedAppointment from '../components/dashboard/products/finished.produ
 import LiveProducts from '../components/dashboard/products/live.products'
 import NewProduct from '../components/dashboard/products/new.product'
 
+import InflowStatus from '../components/dashboard/products/inflow/inflowstatus.product'
 import UvProduct from '../components/dashboard/products/visit/uv.product'
 import VisitDuration from '../components/dashboard/products/visit/visit-duration.product'
 import VisitTimePeriod from '../components/dashboard/products/visit/visit-period.product'
-import InflowStatus from '../components/dashboard/products/inflow/inflowstatus.product'
-import Private from './private'
 import QaPage from '../components/home/Qa.page'
+import Private from './private'
 
 const { Content } = Layout
 
