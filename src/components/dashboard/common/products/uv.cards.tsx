@@ -14,12 +14,12 @@ const UvCards: FC<analyticsI> = ({ analytics }): ReactElement => {
           <div key={list.id} className=''>
             <p className='font-bold  text-black'> {list.title} </p>
             <p className='text-[#4270ED] font-bold   text-lg'>
-              {analytics.total_views || 0}
+              {analytics?.total_views || 0}
             </p>
-            <p className=''> {analytics.total_purchases || 0} </p>
+            <p className=''> {analytics?.total_purchases || 0} </p>
             <p className=''>
               {' '}
-              {analytics.total_rate || 0} {'%'}{' '}
+              {analytics?.total_rate || 0} {'%'}{' '}
             </p>
           </div>
         )
