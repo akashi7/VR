@@ -107,7 +107,7 @@ const UvProduct: FC = (): ReactElement => {
   function Error() {
     notification.error({
       placement: 'top',
-      message: <span className=' text-red'>'뭔가 잘못!!'</span>,
+      message: <span className=' text-red'>'오류가 발생했습니다'</span>,
       duration: 3,
       key: 'error',
       style: {},
@@ -180,17 +180,17 @@ const UvProduct: FC = (): ReactElement => {
   useEffect(() => {
     let filteredArray = filterArray
 
-    if (checkBox === 'total_views') {
+    if (checkBox === 'total_visitors') {
       filteredArray = analytics?.analytics?.filter(
-        (item) => item?.category === 'total_views'
+        (item) => item?.category === 'total_visitors'
       )
-    } else if (checkBox === 'total_purchases') {
+    } else if (checkBox === 'new_visitors') {
       filteredArray = analytics?.analytics?.filter(
-        (item) => item?.category === 'total_purchases'
+        (item) => item?.category === 'new_visitors'
       )
-    } else if (checkBox === 'total_rate') {
+    } else if (checkBox === 'purchase_rate') {
       filteredArray = analytics?.analytics?.filter(
-        (item) => item?.category === 'total_rate'
+        (item) => item?.category === 'purchase_rate'
       )
     }
     setFilterArray(filteredArray)
@@ -274,8 +274,8 @@ const UvProduct: FC = (): ReactElement => {
           <div className='flex flex-row items-center '>
             <input
               type='checkbox'
-              onChange={() => handleCheckboxChange('total_views')}
-              checked={selectedCheckbox === 'total_views'}
+              onChange={() => handleCheckboxChange('total_visitors')}
+              checked={selectedCheckbox === 'total_visitors'}
               className={`lg:h-5 lg:w-5 h-4 w-4 accent-black`}
             />
             <p className='font-bold pl-[10px]'>방문자 수</p>
@@ -283,8 +283,8 @@ const UvProduct: FC = (): ReactElement => {
           <div className='flex flex-row items-center pl-[20px]'>
             <input
               type='checkbox'
-              onChange={() => handleCheckboxChange('total_purchases')}
-              checked={selectedCheckbox === 'total_purchases'}
+              onChange={() => handleCheckboxChange('new_visitors')}
+              checked={selectedCheckbox === 'new_visitors'}
               className={`lg:h-5 lg:w-5 h-4 w-4 accent-black`}
             />
             <p className='font-bold pl-[10px]'>신규 방문자 수</p>
@@ -292,8 +292,8 @@ const UvProduct: FC = (): ReactElement => {
           <div className='flex flex-row items-center pl-[20px]'>
             <input
               type='checkbox'
-              onChange={() => handleCheckboxChange('total_rate')}
-              checked={selectedCheckbox === 'total_rate'}
+              onChange={() => handleCheckboxChange('purchase_rate')}
+              checked={selectedCheckbox === 'purchase_rate'}
               className={`lg:h-5 lg:w-5 h-4 w-4 accent-black`}
             />
             <p className='font-bold pl-[10px]'>구매전환율(%)</p>
@@ -389,11 +389,7 @@ const UvProduct: FC = (): ReactElement => {
                               product?.products[0]?.file_size) ??
                             0
                           ).toFixed(2)}
-                          -{' '}
-                          {(product &&
-                            product?.products &&
-                            product?.products[0]?.file_type) ??
-                            'Unknown'}
+                          - MB
                         </p>
                       </div>
                     </div>

@@ -33,7 +33,7 @@ const LiveProducts: FC = (): ReactElement => {
   function Error() {
     notification.error({
       placement: 'top',
-      message: <span className=' text-red'>'뭔가 잘못!!'</span>,
+      message: <span className=' text-red'>'오류가 발생했습니다'</span>,
       duration: 3,
       key: 'error',
       style: {},
@@ -135,9 +135,7 @@ const LiveProducts: FC = (): ReactElement => {
                           product?.products[0]?.file_size) ??
                         0
                       ).toFixed(2)}
-                      -{' '}
-                      {(product?.products && product?.products[0]?.file_type) ??
-                        'Unknown'}
+                      - MB
                     </p>
                   </div>
                 </div>

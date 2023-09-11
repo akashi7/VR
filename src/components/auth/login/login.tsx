@@ -39,9 +39,7 @@ const LoginPage: FC = (): ReactElement => {
   function success() {
     notification.success({
       placement: 'top',
-      message: (
-        <span className=' text-white'>'당신은 로그인되어 있습니다'</span>
-      ),
+      message: <span className=' text-white'>'로그인 완료'</span>,
       duration: 5,
       key: 'success',
       style: {
@@ -56,7 +54,7 @@ const LoginPage: FC = (): ReactElement => {
   function Error() {
     notification.error({
       placement: 'top',
-      message: <span className=' text-red'>'뭔가 잘못!!'</span>,
+      message: <span className=' text-red'>'오류가 발생했습니다'</span>,
       duration: 5,
       key: 'error',
       style: {},

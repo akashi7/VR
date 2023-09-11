@@ -2,13 +2,12 @@
 /* eslint-disable @typescript-eslint/no-namespace */
 import { Layout, notification } from 'antd'
 import { FC, ReactElement, useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useMatch, useNavigate } from 'react-router-dom'
+import { RootState } from '../../../state'
 import { createPlanApi } from '../../../state/slices/services.slice'
 import { GlobalModel } from '../../modals'
 import Plans from '../common/account/plans'
-import { RootState } from '../../../state'
-import { useSelector } from 'react-redux'
 
 const PlanManagment: FC = (): ReactElement => {
   const dispatch = useDispatch()
@@ -34,7 +33,7 @@ const PlanManagment: FC = (): ReactElement => {
   function Error() {
     notification.error({
       placement: 'top',
-      message: <span className=' text-red'>'뭔가 잘못!!'</span>,
+      message: <span className=' text-red'>'오류가 발생했습니다'</span>,
       duration: 3,
       key: 'error',
       style: {},

@@ -43,7 +43,7 @@ const PublicProduct: FC = (): ReactElement => {
   function Error() {
     notification.error({
       placement: 'top',
-      message: <span className=' text-red'>'뭔가 잘못!!'</span>,
+      message: <span className=' text-red'>'오류가 발생했습니다'</span>,
       duration: 3,
       key: 'error',
       style: {},
