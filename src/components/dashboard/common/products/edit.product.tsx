@@ -78,7 +78,7 @@ const EditProduct: FC<editProductProps> = ({ product }): ReactElement => {
                 </p>
                 <p className='text-[#999999] pl-4'>
                   {' '}
-                  {(pr?.file_size ?? 0).toFixed(2)} GB
+                  {(pr?.file_size ?? 0).toFixed(2)} MB
                 </p>
               </div>
             </div>

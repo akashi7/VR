@@ -71,7 +71,7 @@ const BasicInformation: FC = (): ReactElement => {
   function Error() {
     notification.error({
       placement: 'top',
-      message: <span className=' text-red'>'뭔가 잘못!!'</span>,
+      message: <span className=' text-red'>'오류가 발생했습니다'</span>,
       duration: 3,
       key: 'error',
       style: {},
@@ -152,7 +152,7 @@ const BasicInformation: FC = (): ReactElement => {
                 disabled={!isChecked}
                 onClick={() => Toogle()}
               >
-                요금제 보기
+                회원탈퇴
               </button>
             </div>
             {toogle && (
@@ -231,7 +231,7 @@ const BasicInformation: FC = (): ReactElement => {
                   className='w-fit  text-black  font-medium  text-sm p-[10px] text-center border-solid border-2 border-navactive-800'
                   onClick={() => navigate('/sd/plan')}
                 >
-                  요금제 보기
+                  회원탈퇴
                 </button>
               </div>
             </div>
