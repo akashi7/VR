@@ -197,6 +197,8 @@ const UvProduct: FC = (): ReactElement => {
     //eslint-disable-next-line
   }, [checkBox])
 
+  console.log({ analytics })
+
   const handleDateChange = (e: any) => {
     if (!e) {
       return
